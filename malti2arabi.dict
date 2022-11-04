@@ -1,0 +1,32 @@
+#consonants
+k	k
+t	t
+t	T
+n	n
+z z	ts
+d	d
+m	m
+b	b
+
+
+# vowels # removed the 7arakat from long vowels so as to have mappings that make more sense
+#i	Ai# for beginning of word.. might need more careful CDRewrite rules, IDEA: insert hash using cd rewrite, and have rules here in table
+#vowel to letter
+a	A
+#a	Y
+o	w
+i	y
+i e	A
+e	A#(think about dejjem)
+
+#vowel to diacritic
+i	i
+i	i
+a	a
+e	i
+e	a
+u	u
+o	u
+
+#diphthongs (think about dejjem)
+j j	y
