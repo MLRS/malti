@@ -1,0 +1,78 @@
+a	a	
+e	a	
+i	i	
+i e	A	
+o	u	
+u	u	
+a	a	
+[BOS] o [EOS]	w	-2
+[BOS] u [EOS]	w	-2
+[BOS] a	A	-1
+[BOS] e	A	-1
+[BOS] i	A	-1
+[BOS] i e	A	-1
+[BOS] o	A	-1
+[BOS] u	A	-1
+a [EOS]	p	-1
+e [EOS]	p	-1
+i [EOS]	p	-1
+i e [EOS]	p	-1
+o [EOS]	p	-1
+u [EOS]	p	-1
+b	b	
+ċ	t	
+d	d	
+f	f	
+ġ	j	
+g	j	
+g ħ	E	
+h	h	
+ħ	H	
+j	y	
+k	k	
+l	l	
+m	m	
+n	n	
+p	b	
+q	q	
+r	r	
+s	s	
+t	t	
+v	f	
+w	w	
+x	$	
+ż	z	
+z	d z	
+b b	b ~	-1
+ċ ċ	t c ~	-1
+d d	d ~	-1
+f f	f ~	-1
+ġ ġ	j ~	-1
+g g	j ~	-1
+g ħ g ħ	g ~	-1
+h h	h ~	-1
+ħ ħ	H ~	-1
+j j	y ~	-1
+k k	k ~	-1
+l l	l ~	-1
+m m	m ~	-1
+n n	n ~	-1
+p p	b ~	-1
+q q	q ~	-1
+r r	r ~	-1
+s s	s ~	-1
+t t	t ~	-1
+v v	f ~	-1
+w w	w ~	-1
+x x	c ~	-1
+ż ż	z ~	-1
+z z	d z ~	-1
+,	,	
+!	!	
+:	:	
+;	;	
+?	?	
+.	.	
+'	E	
+ù	u	
+-	-	
