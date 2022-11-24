@@ -21,6 +21,7 @@ o [EOS]	p	-1
 u [EOS]	p	-1
 b	b	
 ċ	t	
+c	t	
 d	d	
 f	f	
 ġ	j	
@@ -41,6 +42,7 @@ t	t
 v	f	
 w	w	
 x	$	
+y	y	
 ż	z	
 z	d z	
 b b	b ~	-1
@@ -67,12 +69,5 @@ w w	w ~	-1
 x x	c ~	-1
 ż ż	z ~	-1
 z z	d z ~	-1
-,	,	
-!	!	
-:	:	
-;	;	
-?	?	
-.	.	
 '	E	
-ù	u	
 -	-	

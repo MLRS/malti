@@ -1,7 +1,11 @@
-import pynini as pn
-from src.utils import safebw2ar,dediac
-from random import randint
 import re
+from typing import List, Tuple
+
+import pynini as pn
+from sklearn.feature_extraction.text import strip_accents_unicode
+
+from utils import safebw2ar, dediac
+
 
 # print() # toggle this to refresh tables on jupyterlab
 
@@ -154,28 +158,104 @@ def translit(astring,in_ortho=MALTI_ORTHO,out_ortho=ARABI_ORTHO):
     # elif direction == 'arabi2malti':
     #     return ((pn.accep(string,token_type=arabi_ortho) ) @ (MALTI2ARABI.closure() @ REWRITES).invert()).optimize().set_input_symbols(arabi_ortho).set_output_symbols(malti_ortho)
 
-def translit_sentence(sent,remove_diacs=False):
-    sent = sent.strip().replace('\n','')
-    # if '\n' in sent:
-    
-    if '\n' in sent:
+
+def dediacritise(text, diacritics_to_keep=""):
+    """
+    Removes diacritics from the text.
+    This preserves any special symbols which aren't diacritised characters.
+
+    Args:
+        text: The text to dediacritise.
+        diacritics_to_keep: Optional diacritics to keep in the text.
+
+    Returns:
+        The dediacritised text.
+    """
+
+    normalised_sent = strip_accents_unicode(text)
+    if diacritics_to_keep:
+        for character in re.finditer(rf"[{diacritics_to_keep}]", text):
+            normalised_sent = normalised_sent[:character.start()] + character.group() + normalised_sent[character.end():]
+    return normalised_sent
+
+
+def map_maltese_to_buckwalter(text: str, remove_diacs: bool = False) -> Tuple[str, str]:
+    """
+    Maps characters which are assumed to be Maltese to the
+    `Buckwalter scheme <https://en.wikipedia.org/wiki/Buckwalter_transliteration>`_.
+
+    Args:
+        text: The source text.
+        remove_diacs: Remove diacritics if set to `True`. Optional, defaults to `False`.
+
+    Returns:
+        The text mapped to the Buckwalter Latin symbols.
+    """
+
+    def split_spans_by_vocabulary(text) -> Tuple[List[str], List[bool]]:
+        """
+        Determines the spans in the given text that are found in the mapping table vocabulary.
+        If the entire text is all found in the vocabulary, the resulting span is the entire text.
+
+        Args:
+            text: The text to check & potentially split.
+
+        Returns: The text spans & corresponding mask which are of the same length.
+        `mask[i] == True` denotes that `span[i]` is out-of-vocabulary & vice-versa when `mask[i] == False`.
+        """
+
+        mask = [not MALTI_ORTHO.member(character) for character in text]
+        indexes_to_skip = list(filter(lambda i: mask[i], range(len(mask))))
+        if len(indexes_to_skip) == 0:
+            spans = [text]
+            mask = [False]
+        else:
+            spans = [text[:indexes_to_skip[0]], text[indexes_to_skip[0]]]
+            mask = [False, True]
+            for i in range(1, len(indexes_to_skip)):
+                current_index, previous_index = indexes_to_skip[i], indexes_to_skip[i - 1]
+                span = text[previous_index + 1:current_index]
+                if len(span) > 0:
+                    spans.append(span)
+                    mask.append(False)
+                spans.append(text[current_index])
+                mask.append(True)
+            spans.append(text[indexes_to_skip[-1] + 1:])
+            mask.append(True)
+        assert "".join(spans) == text
+        assert len(spans) == len(mask)
+        return spans, mask
+
+    text = text.strip().replace('\n', '')
+
+    if '\n' in text:
         raise Exception('nooline')
+
+    text = text.lower()
+    text = dediacritise(text, diacritics_to_keep="ċġħż")
+    spans, mask = split_spans_by_vocabulary(text)
+
     translit_sent = []
     translit_sent_ar = []
-    for tok in sent.split():
-        try:    
+    for tok, mask in zip(spans, mask):
+        try:
+            if mask:
+                translit_sent.append(tok)
+                translit_sent_ar.append(tok)
+                continue
+
             translit_bw = get_paths(translit(tok))[0][1].replace(' ','')
             translit_ar = get_paths(translit(tok))[0][3].replace(' ','')
             if remove_diacs:
                 translit_bw = dediac.dediac_bw(translit_bw)
-                translit_ar = dediac.dediac_ar(translit_ar)                
+                translit_ar = dediac.dediac_ar(translit_ar)
             translit_sent.append(translit_bw)
             translit_sent_ar.append(translit_ar)
         except:
-            translit_sent.append(f'bad@{tok}')
-            translit_sent_ar.append(f'bad@{tok}')
-                
-    return ' '.join(translit_sent),' '.join(translit_sent_ar)
+            translit_sent.append(tok)
+            translit_sent_ar.append(tok)
+
+    return ''.join(translit_sent),''.join(translit_sent_ar)
 
 
 def get_paths(fst,in_ortho=MALTI_ORTHO,out_ortho=ARABI_ORTHO,target=None):
