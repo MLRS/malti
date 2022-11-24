@@ -4,7 +4,7 @@ from typing import List, Tuple
 import pynini as pn
 from sklearn.feature_extraction.text import strip_accents_unicode
 
-from utils import safebw2ar, dediac
+from utils import safebw2ar, dediac, bw2ar
 
 
 # print() # toggle this to refresh tables on jupyterlab
@@ -268,3 +268,15 @@ def get_paths(fst,in_ortho=MALTI_ORTHO,out_ortho=ARABI_ORTHO,target=None):
     
     return sorted(path_items,key=lambda x: int(x[2].to_string()))
 
+
+def transliterate_maltese_to_arabic(text: str) -> str:
+    """
+    Args:
+        text: The text to transliterate, assuming it is Maltese.
+
+    Returns:
+        The transliterated text, in Arabic script.
+    """
+
+    buckwalter_text = map_maltese_to_buckwalter(text)[0]
+    return bw2ar(buckwalter_text)
