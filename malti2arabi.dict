@@ -12,7 +12,7 @@ d	d
 f	f
 ġ	j
 g	j
-g ħ	E
+g ħ	E	-1
 h	h
 ħ	H
 j	y
@@ -55,5 +55,20 @@ w w	w ~	-1
 x x	c ~	-1
 ż ż	z ~	-1
 z z	d z ~	-1
+ċ -	l	-1
+d -	l	-1
+n -	l	-1
+r -	l	-1
+s -	l	-1
+t -	l	-1
+x -	l	-1
+ż -	l	-1
+z -	l	-1
+- i l	a r	-2
+b '	b i	-1
+f '	f i	-1
+s '	s a	-1
+m '	m a	-1
+t '	t a E	-1
 '	E
 -	-

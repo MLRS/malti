@@ -221,7 +221,7 @@ def map_maltese_to_buckwalter(text: str, remove_diacs: bool = False) -> Tuple[st
                 spans.append(text[current_index])
                 mask.append(True)
             spans.append(text[indexes_to_skip[-1] + 1:])
-            mask.append(True)
+            mask.append(False)
         assert "".join(spans) == text
         assert len(spans) == len(mask)
         return spans, mask
