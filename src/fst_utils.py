@@ -1,11 +1,11 @@
-# copied from Max Schmalts -  @whalekeykeeper for string algorithms class with john nerbonne
-import graphviz
 
 
 def get_paths(fst):
     return list(fst.paths().items())[0]
 
 
+# the following is based on Max Schmalts -  @whalekeykeeper for string algorithms class with john nerbonne
+import graphviz
 
 '''
 Pynini has a string transducer representation that is formed as 

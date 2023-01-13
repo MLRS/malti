@@ -6,13 +6,13 @@ def translit(string):
 
 
 # basic map
-malti2safebw = pn.string_file('rules/malti2safebw.cross')
+malti2safebw = pn.string_file('../rules/malti2safebw.cross')
 
 # sigmas
-malti_sigma = pn.string_file('chars/malti.sym')
-safebw_sigma = pn.string_file('chars/safebw.sym')
+malti_sigma = pn.string_file('../chars/malti.sym')
+safebw_sigma = pn.string_file('../chars/safebw.sym')
 
 # shadda rule
-shaddas = pn.string_file('rules/shadda.cross')
+shaddas = pn.string_file('../rules/shadda.cross')
 shadda_rule_sigma = pn.union(safebw_sigma,'~')
 shadda_rule = pn.cdrewrite(shaddas,'','', shadda_rule_sigma.closure()).optimize()
