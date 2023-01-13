@@ -1,2 +1,0 @@
-camel_tools==1.4.1
-pynini==2.1.5
