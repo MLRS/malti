@@ -1,6 +1,30 @@
 from camel_tools.utils.charmap import CharMapper
 from camel_tools.utils.transliterate import Transliterator
 from camel_tools.utils import dediac
+from sklearn.feature_extraction.text import strip_accents_unicode
+import re
+
+
+def dediacritise_malti(text, diacritics_to_keep=""):
+    """
+    Removes diacritics from the text.
+    This preserves any special symbols which aren't diacritised characters.
+
+    Args:
+        text: The text to dediacritise.
+        diacritics_to_keep: Optional diacritics to keep in the text.
+
+    Returns:
+        The dediacritised text.
+    """
+
+    normalised_sent = strip_accents_unicode(text)
+    if diacritics_to_keep:
+        for character in re.finditer(rf"[{diacritics_to_keep}]", text):
+            normalised_sent = normalised_sent[:character.start()] + character.group() + normalised_sent[character.end():]
+    return normalised_sent
+
+
 # from camel_tools.utils.charsets import SAFEBW_CHARSET
 
 # Instantiate the builtin bw2ar (Buckwalter to Arabic) CharMapper
