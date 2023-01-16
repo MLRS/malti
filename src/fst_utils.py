@@ -1,11 +1,13 @@
-# copied from Max Schmalts -  @whalekeykeeper for string algorithms class with john nerbonne
-import graphviz
-
+from text_utils import ar2safebw
 
 def get_paths(fst):
-    return list(fst.paths().items())[0]
+    paths = list(fst.paths().items())
+    paths = [(x[0],ar2safebw(x[1])) for x in paths]
+    return paths
 
 
+# the following is based on Max Schmalts -  @whalekeykeeper for string algorithms class with john nerbonne
+import graphviz
 
 '''
 Pynini has a string transducer representation that is formed as 
