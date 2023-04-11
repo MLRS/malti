@@ -9,11 +9,11 @@ għ	ع
 għ	غ
 '	ع
 ie	ا
-a	
-e	
-i	
-o	
-u	
+a	َ
+e	َ
+i	ِ
+o	ُ
+u	ُ
 a	ا
 e	ا
 i	ي
@@ -49,46 +49,46 @@ y	ي
 ż	ز
 z	دز
 #shadda
-bb	ب
-ċċ	تش
-cc	ك
-dd	د
-ff	ف
-ġġ	ج
-gg	ج
-hh	ه
-ħħ	ح
-jj	ي
-kk	ك
-ll	ل
-mm	م
-nn	ن
-pp	ب
-qq	ق
-rr	ر
-ss	س
-tt	ت
-vv	ف
-ww	و
-xx	ش
-żż	ز
-zz	دز
+bb	بّ
+ċċ	تشّ
+cc	كّ
+dd	دّ
+ff	فّ
+ġġ	جّ
+gg	جّ
+hh	هّ
+ħħ	حّ
+jj	يّ
+kk	كّ
+ll	لّ
+mm	مّ
+nn	نّ
+pp	بّ
+qq	قّ
+rr	رّ
+ss	سّ
+tt	تّ
+vv	فّ
+ww	وّ
+xx	شّ
+żż	زّ
+zz	دزّ
 #alif-initial
-<BOS>i	ا
-<BOS>e	ا
-<BOS>a	ا
-<BOS>u	ا
-<BOS>o	ا
+<BOS>i	اِ
+<BOS>e	اِ
+<BOS>a	اَ
+<BOS>u	اُ
+<BOS>o	اُ
 #apostrofu
-b'<EOS>	
-f'<EOS>	
-s'<EOS>	
-m'<EOS>	
+b'<EOS>	ِ
+f'<EOS>	ِ
+s'<EOS>	ِ
+m'<EOS>	ِ
 #lil
-il<EOS>	لل
-l<EOS>	لل
-il-<EOS>	لل+
-l-<EOS>	لل+
+il<EOS>	لِل
+l<EOS>	لِل
+il-<EOS>	لِل+
+l-<EOS>	لِل+
 <BOS>u<EOS>	و
 #final-vowels
 a<EOS>	ه

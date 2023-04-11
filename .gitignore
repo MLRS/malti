@@ -1,1 +1,4 @@
 .idea
+aggregated_country/
+*.zip
+.DS_Store
