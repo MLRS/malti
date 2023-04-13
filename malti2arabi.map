@@ -83,10 +83,15 @@ zz	دز
 <BOS>u	ا
 <BOS>o	ا
 #apostrofu
-b'<EOS>	
-f'<EOS>	
-s'<EOS>	
-m'<EOS>	
+b'<EOS>	ب+
+f'<EOS>	ف+
+s'<EOS>	س+
+m'<EOS>	م+
+m'<EOS>	م+
+#m'<EOS>	ما
+#m'<EOS>	مع
+#m'<EOS>	من
+t'<EOS>	تاع
 #lil
 'il<EOS>	لل
 'l<EOS>	لل
