@@ -1,6 +1,5 @@
 .idea
-aggregated_country/
-*.zip
 .DS_Store
-dev
-mudt_transliterated_tuples.tsv
+data/arabi_data/arabic_lm/
+data/malti_data/
+transliterations/
