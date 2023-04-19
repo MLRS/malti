@@ -2,3 +2,5 @@
 aggregated_country/
 *.zip
 .DS_Store
+dev
+mudt_transliterated_tuples.tsv

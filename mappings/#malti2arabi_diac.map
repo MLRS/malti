@@ -1,9 +1,9 @@
-#otherlatin
+#other latin
 à	à
 è	è
 ò	ò
 é	é
-#num
+#nums
 0	0
 1	1
 2	2
@@ -15,7 +15,7 @@
 6	6
 7	7
 #punc
-=	=
+=   =
 .	.
 ,	,
 "	"
@@ -28,28 +28,25 @@
 /	/
 …	…
 %	%
-\[	\[
+\[	[
 *	*
 •	•
 –	–
 $	$
 &	&
-\]	\]
+\]	]
 ÷	÷
 \	\
 °	°
 £	£
 |	|
 €	€
-!	!
-,	,
 #special	
  	 
 +	+
 <EOS>	
 <BOS>	
--<EOS>	+
--il	ل
+-	
 #char-map
 għ	ع
 għ	غ
@@ -88,7 +85,6 @@ r	ر
 s	ص
 s	س
 t	ت
-t	ط
 v	ف
 w	و
 x	ش
@@ -96,53 +92,38 @@ y	ي
 ż	ز
 z	دز
 #shadda
-bb	ب
-ċċ	تش
-cc	ك
-dd	د
-ff	ف
-ġġ	ج
-gg	ج
-hh	ه
-ħħ	ح
-jj	ي
-kk	ك
-ll	ل
-mm	م
-nn	ن
-pp	ب
-qq	ق
-rr	ر
-ss	س
-tt	ت
-tt	ط
-vv	ف
-ww	و
-xx	ش
-żż	ز
-zz	دز
+bb	بّ
+ċċ	تشّ
+cc	كّ
+dd	دّ
+ff	فّ
+ġġ	جّ
+gg	جّ
+hh	هّ
+ħħ	حّ
+jj	يّ
+kk	كّ
+ll	لّ
+mm	مّ
+nn	نّ
+pp	بّ
+qq	قّ
+rr	رّ
+ss	سّ
+tt	تّ
+vv	فّ
+ww	وّ
+xx	شّ
+żż	زّ
+zz	دزّ
 #alif-initial
-<BOS>i	ا
-<BOS>e	ا
-<BOS>a	ا
-<BOS>u	ا
-<BOS>o	ا
-#apostrofu
-b'<EOS>	ب+
-f'<EOS>	ف+
-s'<EOS>	س+
-m'<EOS>	م+
-m'<EOS>	م+
-#m'<EOS>	ما
-#m'<EOS>	مع
-#m'<EOS>	من
-t'<EOS>	تاع
-#lil
-'il<EOS>	لل
-'l<EOS>	لل
-'il-<EOS>	لل+
-'l-<EOS>	لل+
-<BOS>u<EOS>	+و
+<BOS>i	اِ
+<BOS>e	اِ
+<BOS>a	اَ
+<BOS>u	اُ
+<BOS>o	اُ
+#waw
+<BOS>u<EOS>	و
 #final-vowels
 a<EOS>	ه
 a<EOS>	ة
@@ -152,8 +133,18 @@ i<EOS>	ي
 e<EOS>	ي
 o<EOS>	و
 u<EOS>	و
-u<EOS>	ه
 u<EOS>	وا
+#apostrofu
+b'<EOS>	ِ
+f'<EOS>	ِ
+s'<EOS>	ِ
+m'<EOS>	ِ
+t'<EOS>	تاع
+#lil
+il<EOS>	لِل
+l<EOS>	لِل
+il-<EOS>	لِل+
+l-<EOS>	لِل+
 #sink
 iċ-	ال+
 id-	ال+
