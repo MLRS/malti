@@ -1,20 +1,17 @@
 <BOS>li<EOS>	اللي
 <BOS>pero'<EOS>	برو
-<BOS>u<EOS>	و+
-<BOS>ma<EOS>	ما
+<BOS>xi<EOS>	شي
 <BOS>kien<EOS>	كان
 <BOS>biex<EOS>	باش
 <BOS>minn<EOS>	من
 <BOS>fuq<EOS>	فوق
 <BOS>qed<EOS>	قد
 <BOS>dan<EOS>	دان
-<BOS>xi<EOS>	شي
 <BOS>se<EOS>	س+
 <BOS>kienet<EOS>	كانت
-<BOS>għal<EOS>	على
+<BOS>u<EOS>	و+
 <BOS>jekk<EOS>	ياك
 <BOS>din<EOS>	دين
-<BOS>kif<EOS>	كيف
 <BOS>hemm<EOS>	هم
 <BOS>jew<EOS>	يو
 <BOS>meta<EOS>	متى
@@ -22,7 +19,7 @@
 <BOS>hu<EOS>	هو
 <BOS>lil<EOS>	ل+
 <BOS>kienu<EOS>	كانوا
-<BOS>għax<EOS>	عاش
+<BOS>tnax-il<EOS>	اثناعشل
 <BOS>dak<EOS>	داك
 <BOS>dwar<EOS>	دوار
 <BOS>kemm<EOS>	كم
@@ -48,7 +45,6 @@
 <BOS>kollox<EOS>	كلش
 <BOS>lejn<EOS>	لين
 <BOS>ħadd<EOS>	حد
-<BOS>għandu<EOS>	عنده
 <BOS>xejn<EOS>	شين
 <BOS>dawk<EOS>	دوك
 <BOS>ħafna<EOS>	حفنة
@@ -69,25 +65,23 @@
 <BOS>bħal<EOS>	بحال
 <BOS>taħt<EOS>	تحت
 <BOS>bħallikieku<EOS>	بحال اللي كيكو
-<BOS>qabel<EOS>	قبل
+<BOS>tmien<EOS>	ثمان
 <BOS>żewġ<EOS>	زوج
-<BOS>ma<EOS>	ما
 <BOS>waqt<EOS>	وقت
 <BOS>tiegħi<EOS>	تاعي
 <BOS>hija<EOS>	هي
 <BOS>anke<EOS>	انكي
 <BOS>tagħna<EOS>	تاعنا
-<BOS>qegħdin<EOS>	قاعدين
+<BOS>tlieta<EOS>	ثلاثة
 <BOS>aħna<EOS>	احنا
 <BOS>lanqas<EOS>	لانقص
 <BOS>kollu<EOS>	كله
 <BOS>bħalma<EOS>	بحال ما
-<BOS>għandna<EOS>	عندنا
 <BOS>kieku<EOS>	كيكو
 <BOS>bla<EOS>	بلا
 <BOS>kontra<EOS>	كونترا
 <BOS>matul<EOS>	مثل
-<BOS>għaliex<EOS>	علاش
+<BOS>sitta<EOS>	ستة
 <BOS>jkunu<EOS>	يكونوا
 <BOS>għandhom<EOS>	عندهم
 <BOS>billi<EOS>	باللي
@@ -98,8 +92,7 @@
 <BOS>ruħu<EOS>	تاع ال+
 <BOS>nofs<EOS>	نفص
 <BOS>tieni<EOS>	ثاني
-<BOS>għandha<EOS>	عندها
-<BOS>għandi<EOS>	عندي
+<BOS>sejrin<EOS>	سايرين
 <BOS>le<EOS>	لي
 <BOS>talanqas<EOS>	تاع الانقص
 <BOS>hawn<EOS>	هون
@@ -107,10 +100,8 @@
 <BOS>int<EOS>	انت
 <BOS>ebda<EOS>	ابدا
 <BOS>'il<EOS>	لل+
-<BOS>fih<EOS>	فيه
 <BOS>liema<EOS>	لاما
-<BOS>xi<EOS>	شي
-<BOS>ilu<EOS>	اله
+<BOS>qiegħed<EOS>	قاعد
 <BOS>fiha<EOS>	فيها
 <BOS>minnhom<EOS>	منهم
 <BOS>għadu<EOS>	عنده
@@ -130,7 +121,7 @@
 <BOS>anki<EOS>	انكي
 <BOS>mela<EOS>	مالا
 <BOS>nkunu<EOS>	نكونوا
-<BOS>qiegħed<EOS>	قاعد
+<BOS>qiegħda<EOS>	قاعدة
 <BOS>fost<EOS>	فوسط
 <BOS>ġo<EOS>	جوا
 <BOS>stess<EOS>	ستس
@@ -142,9 +133,8 @@
 <BOS>xulxin<EOS>	ال+
 <BOS>donnu<EOS>	ظنه
 <BOS>għad<EOS>	عند
-<BOS>għandek<EOS>	عندك
-<BOS>ilu<EOS>	اله
-<BOS>għalkemm<EOS>	على كم 
+<BOS>qegħdin<EOS>	قاعدين
+<BOS>għalkemm<EOS>	على كم
 <BOS>jiena<EOS>	يانا
 <BOS>għalhekk<EOS>	على هيك
 <BOS>filwaqt<EOS>	في الوقت
@@ -159,32 +149,28 @@
 <BOS>lilu<EOS>	له
 <BOS>għand<EOS>	عند
 <BOS>minnha<EOS>	منها
-<BOS>qiegħed<EOS>	قاعد
 <BOS>ħalli<EOS>	خلي
-<BOS>la<EOS>	لا
+<BOS>qabel<EOS>	قبل
 <BOS>għaddej<EOS>	عادي
 <BOS>ħlief<EOS>	خلاف
 <BOS>madwar<EOS>	مدوار
 <BOS>magħhom<EOS>	معهم
-<BOS>qiegħda<EOS>	قاعدة
 <BOS>inhu<EOS>	انهو
 <BOS>kellu<EOS>	كان له
-<BOS>la<EOS>	لا
-<BOS>qegħdin<EOS>	قاعدين
+<BOS>minkejja<EOS>	من نكاية
 <BOS>biha<EOS>	بيها
-<BOS>fihom<EOS>	فيهم
+<BOS>minflok<EOS>	من فلوك
 <BOS>inti<EOS>	انتي
 <BOS>ħa<EOS>	ح+
 <BOS>kinux<EOS>	كانوش
 <BOS>sitt<EOS>	ست
 <BOS>daqs<EOS>	دقس
 <BOS>kienlu<EOS>	كان له
-<BOS>ħames<EOS>	خمس
 <BOS>fosthom<EOS>	فوسطهم
 <BOS>minnu<EOS>	منه
 <BOS>quddiemu<EOS>	قدامه
 <BOS>kemm-il<EOS>	كمل
-<BOS>hux<EOS>	هوش
+<BOS>ma<EOS>	ما
 <BOS>iniex<EOS>	اناش
 <BOS>mhijiex<EOS>	ماهياش
 <BOS>donnhom<EOS>	ظنهم
@@ -235,9 +221,8 @@
 <BOS>ġejja<EOS>	جاية
 <BOS>nieqsa<EOS>	ناقصة
 <BOS>minna<EOS>	منا
-<BOS>aħniex<EOS>	احناش
 <BOS>daqskemm<EOS>	دقسكم
-<BOS>għaliex<EOS>	علاش
+<BOS>la<EOS>	لا
 <BOS>hawnx<EOS>	هونش
 <BOS>'l<EOS>	لل
 <BOS>uħud<EOS>	وحود
@@ -252,10 +237,9 @@
 <BOS>ilha<EOS>	الها
 <BOS>kulmin<EOS>	كل من
 <BOS>milli<EOS>	ماللي
-<BOS>qabel<EOS>	قبل
 <BOS>saħansitra<EOS>	سحنسترا
 <BOS>ser<EOS>	سر
-<BOS>ħames<EOS>	خمس
+<BOS>kif<EOS>	كيف
 <BOS>ħdax-il<EOS>	احدعشل
 <BOS>wħud<EOS>	وحود
 <BOS>sejjer<EOS>	ساير
@@ -272,7 +256,6 @@
 <BOS>inkun<EOS>	نكون
 <BOS>elf<EOS>	الف
 <BOS>sittin<EOS>	ستين
-<BOS>tlieta<EOS>	ثلاثة
 <BOS>żewġt<EOS>	زوجة
 <BOS>ħiereġ<EOS>	خارج
 <BOS>ħierġa<EOS>	خارجة
@@ -299,7 +282,7 @@
 <BOS>lilha<EOS>	لها
 <BOS>dieħla<EOS>	داخلة
 <BOS>miexi<EOS>	ماشي
-<BOS>sejrin<EOS>	سايرين
+<BOS>intix<EOS>	انتيش
 <BOS>siekta<EOS>	ساكتة
 <BOS>flok<EOS>	فلوك
 <BOS>inkluż<EOS>	انكلوز
@@ -313,14 +296,13 @@
 <BOS>fiex<EOS>	فاش
 <BOS>mnejn<EOS>	منين
 <BOS>xiex<EOS>	شاش
-<BOS>hux<EOS>	هوش
 <BOS>daqsxejn<EOS>	دقسشين
 <BOS>għandhomx<EOS>	عندهمش
 <BOS>minbarra<EOS>	من برا
 <BOS>jismu<EOS>	يسمه
 <BOS>maġenb<EOS>	من جنب
 <BOS>basta<EOS>	بستا
-<BOS>kif<EOS>	كيف
+<BOS>ilu<EOS>	اله
 <BOS>grazzi<EOS>	جرادزي
 <BOS>uquuuuu<EOS>	أأو
 <BOS>jkunux<EOS>	يكونوش
@@ -329,14 +311,12 @@
 <BOS>erbgħa<EOS>	اربعة
 <BOS>erbgħin<EOS>	اربعين
 <BOS>mija<EOS>	مية
-<BOS>sitta<EOS>	ستة
 <BOS>sittax-il<EOS>	ستتعشل
 <BOS>tmenin<EOS>	ثمانين
-<BOS>sitta<EOS>	ستة
+<BOS>hux<EOS>	هوش
 <BOS>tmienja<EOS>	ثمانية
 <BOS>mejtin<EOS>	ميتين
 <BOS>nieqes<EOS>	ناقص
-<BOS>qiegħda<EOS>	قاعدة
 <BOS>telgħin<EOS>	طالعين
 <BOS>maġenbkom<EOS>	من جنبكم
 <BOS>bik<EOS>	بك
@@ -352,21 +332,18 @@
 <BOS>maġenbna<EOS>	من جنبنا
 <BOS>illi<EOS>	اللي
 <BOS>anzi<EOS>	اندزي
-<BOS>kemm<EOS>	كم
 <BOS>maġenbu<EOS>	من جنبه
 <BOS>ħeqq<EOS>	حق
 <BOS>jalla<EOS>	يلا
 <BOS>prosit<EOS>	برست
 <BOS>qaħbeċ<EOS>	قحبة
 <BOS>lilkom<EOS>	لكم
-<BOS>disgħa<EOS>	تسعة
 <BOS>erbatax-il<EOS>	اربعتعشل
 <BOS>ħmistax-il<EOS>	خمستعشل
 <BOS>mitt<EOS>	مية
 <BOS>tletin<EOS>	ثلاثين
-<BOS>tnax-il<EOS>	اثناعشل
+<BOS>hix<EOS>	هيش
 <BOS>tużżana<EOS>	دزينة
-<BOS>għaxar<EOS>	عشر
 <BOS>dieħel<EOS>	داخل
 <BOS>imsiefer<EOS>	مسافر
 <BOS>liebes<EOS>	لابس
@@ -382,16 +359,14 @@
 <BOS>bħalhom<EOS>	بحالهم
 <BOS>dwaru<EOS>	دواره
 <BOS>fuqek<EOS>	فوقك
-<BOS>għandek<EOS>	عندك
-<BOS>għandha<EOS>	عندها
-<BOS>għandu<EOS>	عنده
+<BOS>ħames<EOS>	خمس
+<BOS>għaxar<EOS>	عشر
 <BOS>ħdejja<EOS>	حديا
 <BOS>lejk<EOS>	ليك
 <BOS>maġenbi<EOS>	من جنبي
 <BOS>minħabba<EOS>	من حبة
 <BOS>minnek<EOS>	منك
 <BOS>imkien<EOS>	مكان
-<BOS>għala<EOS>	على
 <BOS>intom<EOS>	انتم
 <BOS>nfisha<EOS>	نفسها
 <BOS>kwalunkwe<EOS>	كوالنكوي
@@ -405,9 +380,8 @@
 <BOS>qisni<EOS>	قيسني
 <BOS>avolja<EOS>	افوليا
 <BOS>mingħalih<EOS>	من عليه
-<BOS>kemm<EOS>	كم
 <BOS>tagħkom<EOS>	تاعكم
-<BOS>mingħand<EOS>	من عند 
+<BOS>mingħand<EOS>	من عند
 <BOS>eċċetra<EOS>	اتشترا
 <BOS>ħej<EOS>	هي
 <BOS>mingħandha<EOS>	من عندنا
@@ -421,15 +395,13 @@
 <BOS>tkunu<EOS>	تكونوا
 <BOS>lilhom<EOS>	لهم
 <BOS>lilna<EOS>	لنا
-<BOS>għaxar<EOS>	عشر
+<BOS>għax<EOS>	عاش
 <BOS>ħmistax<EOS>	خمستعش
 <BOS>miljun<EOS>	مليون
 <BOS>tlett<EOS>	ثلاث
-<BOS>tmien<EOS>	ثمان
 <BOS>nofsu<EOS>	نفصه
-<BOS>disgħa<EOS>	تسعة
+<BOS>għandu<EOS>	عنده
 <BOS>sebgħa<EOS>	سبعة
-<BOS>tnax-il<EOS>	اثناعشل
 <BOS>deħlin<EOS>	داخلين
 <BOS>ħerġin<EOS>	خارجين
 <BOS>ħieles<EOS>	خالص
@@ -449,7 +421,6 @@
 <BOS>fija<EOS>	فيا
 <BOS>fik<EOS>	فيك
 <BOS>fina<EOS>	فينا
-<BOS>għandi<EOS>	عندي
 <BOS>għandna<EOS>	عندنا
 <BOS>lejkom<EOS>	ليكم
 <BOS>lejna<EOS>	لينا
@@ -466,8 +437,7 @@
 <BOS>warajk<EOS>	وراك
 <BOS>warajna<EOS>	ورانا
 <BOS>mkien<EOS>	مكان
-<BOS>hix<EOS>	هيش
-<BOS>intix<EOS>	انتيش
+<BOS>għandi<EOS>	عندي
 <BOS>hijiex<EOS>	هياش
 <BOS>mhi<EOS>	ماهي
 <BOS>mhu<EOS>	ماهو
@@ -477,19 +447,17 @@
 <BOS>nfusna<EOS>	نفسنا
 <BOS>nnifsi<EOS>	نفسي
 <BOS>ruħi<EOS>	روحي
-<BOS>fihom<EOS>	فيهم
+<BOS>għandha<EOS>	عندها
 <BOS>għadx<EOS>	عندش
 <BOS>għandkom<EOS>	عندكم
 <BOS>ilek<EOS>	الك
 <BOS>jisimha<EOS>	يسمها
-<BOS>u<EOS>	و+
 <BOS>mingħajru<EOS>	من غيره
 <BOS>mingħajrhom<EOS>	من غيرهم
 <BOS>mingħajri<EOS>	من غيري
-<BOS>minflok<EOS>	من فلوك
+<BOS>għandek<EOS>	عندك
 <BOS>il<EOS>	ال+
 <BOS>inqas<EOS>	انقص
-<BOS>minflok<EOS>	من فلوك
 <BOS>tieghi<EOS>	تاعي
 <BOS>haw<EOS>	هو
 <BOS>mhemmx<EOS>	ماهمش
@@ -531,8 +499,7 @@
 <BOS>żewg<EOS>	زوج
 <BOS>kwart<EOS>	كوارت
 <BOS>terz<EOS>	تردز
-<BOS>tlieta<EOS>	ثلاثة
-<BOS>tmien<EOS>	ثمان
+<BOS>għaliex<EOS>	علاش
 <BOS>acting<EOS>	اكتنج
 <BOS>bieżel<EOS>	بازل
 <BOS>għaddejin<EOS>	عدايين
@@ -552,7 +519,6 @@
 <BOS>dment<EOS>	دمنت
 <BOS>favuriha<EOS>	ففرها
 <BOS>għajr<EOS>	غير
-<BOS>għal<EOS>	على
 <BOS>għala<EOS>	على
 <BOS>inkluża<EOS>	انكلوزا
 <BOS>inklużi<EOS>	انكلوزي
@@ -576,8 +542,7 @@
 <BOS>madwarkom<EOS>	مدواركم
 <BOS>madwarna<EOS>	مدوارنا
 <BOS>minfloki<EOS>	من فلوكي
-<BOS>minkejja<EOS>	من نكاية
-<BOS>minkejja<EOS>	من نكاية
+<BOS>għal<EOS>	على
 <BOS>nissuġġerilu<EOS>	نسجر له
 <BOS>jaħasra<EOS>	يا حسرة
 <BOS>jkollok<EOS>	يكون لك
@@ -596,21 +561,18 @@
 <BOS>taħtna<EOS>	تحتنا
 <BOS>warajja<EOS>	وراي
 <BOS>kiegħed<EOS>	قاعد
-<BOS>sejrin<EOS>	سايرين
+<BOS>fihom<EOS>	فيهم
 <BOS>kul<EOS>	كل
 <BOS>fej<EOS>	في
 <BOS>fejnha<EOS>	فينها
 <BOS>jkollu<EOS>	يكون له
-<BOS>għax<EOS>	عاش
 <BOS>kermm<EOS>	كرم
 <BOS>jkollha<EOS>	يكون لها
 <BOS>xinhu<EOS>	شنهو
-<BOS>aħniex<EOS>	احناش
-<BOS>humiex<EOS>	هماش
+<BOS>fih<EOS>	فيه
 <BOS>jagħmluhiex<EOS>	يعملوهاش
-<BOS>hix<EOS>	هيش
+<BOS>disgħa<EOS>	تسعة
 <BOS>inhiex<EOS>	انهاش
-<BOS>intix<EOS>	انتيش
 <BOS>nifsek<EOS>	نفسك
 <BOS>nifsi<EOS>	نفسي
 <BOS>nnifisha<EOS>	نفسها
@@ -624,7 +586,7 @@
 <BOS>biħsiebek<EOS>	بحسابك
 <BOS>donni<EOS>	ظني
 <BOS>faqqajt<EOS>	فقيت
-<BOS>fih<EOS>	فيه
+<BOS>aħniex<EOS>	احناش
 <BOS>fiħsiebha<EOS>	فحسابها
 <BOS>fiħsiebhom<EOS>	فحسابهم
 <BOS>ftaħt<EOS>	فتحت

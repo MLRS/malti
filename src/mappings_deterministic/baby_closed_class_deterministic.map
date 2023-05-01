@@ -18,14 +18,12 @@
 <BOS>ċ-<EOS>	ال+
 <BOS>ż-<EOS>	ال+
 <BOS>z-<EOS>	ال+
-<BOS>l-<EOS>	ال+
 <BOS>dal-<EOS>	دال+
 <BOS>dil-<EOS>	دال+
 <BOS>dis-<EOS>	دال+
 <BOS>dar-<EOS>	دال+
 <BOS>das-<EOS>	دال+
 <BOS>did-<EOS>	دال+
-<BOS>dis-<EOS>	دال+
 <BOS>daż-<EOS>	دال+
 <BOS>dit-<EOS>	دال+
 <BOS>l'<EOS>	اللي
@@ -35,7 +33,6 @@
 <BOS>disa'<EOS>	تسع
 <BOS>tmint'<EOS>	ثمانية
 <BOS>raba'<EOS>	ربع
-<BOS>seba'<EOS>	سبع
 <BOS>seba'<EOS>	سبع
 <BOS>b'<EOS>	ب+
 <BOS>bi-<EOS>	ب+
@@ -92,7 +89,6 @@
 <BOS>lix-<EOS>	لل+
 <BOS>liz-<EOS>	لل+
 <BOS>lil-<EOS>	لل+
-<BOS>lil-<EOS>	لل+
 <BOS>liż-<EOS>	لل+
 <BOS>mill-<EOS>	مال+
 <BOS>mal-<EOS>	مال+
@@ -109,7 +105,6 @@
 <BOS>mar-<EOS>	مال+
 <BOS>man-<EOS>	مال+
 <BOS>maż-<EOS>	مال+
-<BOS>mil-<EOS>	مال+
 <BOS>maċ-<EOS>	مال+
 <BOS>max-<EOS>	مال+
 <BOS>miċ-<EOS>	مال+
@@ -122,10 +117,8 @@
 <BOS>sas-<EOS>	سال+
 <BOS>sax-<EOS>	سال+
 <BOS>x'<EOS>	شي
-<BOS>x'<EOS>	شي
 <BOS>ta'<EOS>	تاع
 <BOS>t'<EOS>	تاع
-<BOS>ta'<EOS>	تاع
 <BOS>tal-<EOS>	تاع ال+
 <BOS>tas-<EOS>	تاع ال+
 <BOS>tad-<EOS>	تاع ال+
