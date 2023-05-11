@@ -1,14 +1,11 @@
-from malti2arabi_fst import *
-import numpy as np
-import pandas as pd
-from sklearn.feature_extraction.text import strip_accents_unicode
-import kenlm
-from transformers import AutoTokenizer
+import logging
 import re
 
-tokenizer = AutoTokenizer.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix")
-wordmodel = kenlm.Model('../data/arabi_data/arabic_lm/aggregated_country/lm/word/tn-maghreb.arpa')
-charmodel = kenlm.Model('../data/arabi_data/arabic_lm/aggregated_country/lm/char/tn-maghreb.arpa')
+import numpy as np
+from sklearn.feature_extraction.text import strip_accents_unicode
+
+from malti2arabi_fst import *
+from token_rankers import RandomRanker, TokenRanker
 
 
 def dediac_fst(text):
@@ -27,7 +24,7 @@ def get_paths(fst,words_only=False):
         return paths
 
 
-def apply_translit_fst(tok,backoff_fsts=[baby_closed_class,augmented_closed_class]):
+def apply_translit_fst(tok, backoff_fsts):
     tok = tok.replace('[','\[').replace(']','\]')
     tok = (f'<BOS>{tok}<EOS>')
     # if type=='det':
@@ -79,15 +76,6 @@ def translit_word(lowered_tok,backoffs): #select on merged but return unmerged
     return translit_toks
 
 
-
-words_df= pd.read_fwf('../data/arabi_data/tn-maghreb-words.txt',header=None).rename(columns={0:'words'})
-words_df['dediac'] = pd.Series([dediac_fst(x) for x in words_df['words']])
-
-langmodelset =  set(words_df['dediac'])
-
-def count_subtokens(text, tokenizer):
-    return tokenizer(text, add_special_tokens=False, return_length=True)["length"]
-
 def strip_plus(x):
     if x == "+":
         return x
@@ -114,124 +102,41 @@ def dediacritise_non_malti_accents(text: str, diacritics_to_keep: str = "ċġħ�
     return normalised_text
 
 
-def translit_and_rank_options(word,backoffs,name='translit',fsttype='non-det'):
-    normalized = dediacritise_non_malti_accents(word)
+def translit_and_rank_options(token: str,
+                              token_mappings: list[str] = None,
+                              token_rankers: list[TokenRanker] = None):
+    if token_rankers is None:
+        token_rankers = []
+    if token_mappings is None:
+        token_mappings = []
+
+    def choose(alternatives):
+        for ranker in token_rankers:
+            alternatives = ranker.filter_best(alternatives)
+            if len(alternatives) == 1:
+                # no need to filter further
+                break
+        if len(alternatives) > 1:
+            # unresolved ties
+            logging.warning(f'Choosing randomly for token "{token}"')
+            alternatives = RandomRanker().filter_best(alternatives)
+        return alternatives[0]
+
+    normalized = dediacritise_non_malti_accents(token)
     lowered = normalized.lower()
-    translit_dict = {
-        'word_raw':word,
-        'word_normalized':lowered,
-        }
-    
-    if fsttype == 'det':
-        translit = [translit_deterministic(lowered,backoffs)]
-    elif fsttype == 'non-det':
-        translit = translit_word(lowered,backoffs)
+
+    backoffs = [get_token_mappings(path) for path in token_mappings]
+    if token_rankers:
+        alternatives = translit_word(lowered, backoffs)
     else:
-        raise Exception('wrong fsttype')
+        alternatives = [translit_deterministic(lowered, backoffs)]
 
-    translit_dict[name] = translit
-    translit_dict['translit'] = translit # keep this, in order to merge later
-    translit_dict['translit_stripped'] = [strip_plus(x) for x in translit]
-    translit_dict['wordmodel_score'] = [wordmodel.score(x) for x in translit_dict['translit_stripped']]
-    translit_dict['charmodel_score'] = [charmodel.score(' '.join(x)) for x in translit_dict['translit_stripped'] ]
-    translit_dict['capitalized'] = word[0].isupper() # TODO: what about letter after sink as in 'L-Innu', does it matter?
-    translit_dict['in_langmodel'] = [x in langmodelset for x in translit_dict['translit_stripped']]
-    translit_dict['subtokens'] = count_subtokens(translit_dict['translit_stripped'], tokenizer)
-    # translit_dict['subtokens_lowest_ties'] = sum(np.array(translit_dict['subtokens']) == min(translit_dict['subtokens']))
+    alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
 
-    return translit_dict
+    if len(alternatives) == 0:
+        logging.warning(f'No valid alternatives for token "{token}", choosing same token')
+        transliterated_token = token
+    else:
+        transliterated_token = choose(alternatives) if token_rankers else alternatives[0]
 
-
-def generate_table(word):
-    det = translit_and_rank_options(word,name='det',fsttype='det',backoffs=[])    
-    det_smallcc = translit_and_rank_options(word,name='det_smallcc',fsttype='det', backoffs=[baby_closed_class_deterministic])    
-    det_fullcc = translit_and_rank_options(word,name='det_fullcc',fsttype='det', backoffs=[baby_closed_class_deterministic,augmented_closed_class])    
-    nondet = translit_and_rank_options(word,name='nondet',fsttype='non-det',backoffs=[])
-    nondet_smallcc = translit_and_rank_options(word,name='nondet_smallcc',fsttype='non-det',backoffs=[baby_closed_class])
-    nondet_fullcc = translit_and_rank_options(word,name='nondet_fullcc',fsttype='non-det',backoffs=[baby_closed_class,augmented_closed_class])
-    det['freq'] = np.nan
-    det_smallcc['freq'] = np.nan
-    det_fullcc['freq'] = np.nan
-    nondet['freq'] = np.nan
-    nondet_smallcc['freq'] = np.nan
-    nondet_fullcc['freq'] = np.nan
-    
-    return (det,det_smallcc,det_fullcc,nondet,nondet_smallcc,nondet_fullcc,)
-   
-# det,det_smallcc,det_fullcc,nondet,nondet_smallcc,nondet_fullcc = generate_table(word)
-# det = pd.DataFrame(det)
-# det_smallcc = pd.DataFrame(det_smallcc)
-# det_fullcc = pd.DataFrame(det_fullcc)
-# nondet = pd.DataFrame(nondet)
-# nondet_smallcc = pd.DataFrame(nondet_smallcc)
-# nondet_fullcc = pd.DataFrame(nondet_fullcc)
-
-def merge_multiple(dfs):
-    first = dfs[0]
-    for df in dfs[1:]:
-        first = first.merge(df,how='outer')
-    
-    return first.sort_values('wordmodel_score',ascending=False)[[
-        'word_raw',
-        'word_normalized',
-        'freq',
-        'translit',
-        'det',
-        'det_smallcc',
-        'det_fullcc',
-        'nondet',
-        'nondet_smallcc',
-        'nondet_fullcc',        
-        'translit_stripped',
-        'wordmodel_score',
-        'charmodel_score',
-        'capitalized',
-        'in_langmodel',
-        'subtokens',
-        # 'subtokens_lowest_ties',
-        ]]
-
-def translit_dataset(word_hist):
-    
-    detlist = []
-    det_smallcclist = []
-    det_fullcclist = []
-    nondetlist = []
-    nondet_smallcclist = []
-    nondet_fullcclist = []
-
-    for word,freq in word_hist.values[:]:
-        
-        det, det_smallcc, det_fullcc, nondet, nondet_smallcc, nondet_fullcc = generate_table(word)
-        det['freq'] = freq
-        det_smallcc['freq'] = freq
-        det_fullcc['freq'] = freq
-        nondet['freq'] = freq
-        nondet_smallcc['freq'] = freq
-        nondet_fullcc    ['freq'] = freq
-        
-        detlist.append(det)
-        det_smallcclist.append(det_smallcc)
-        det_fullcclist.append(det_fullcc)
-        nondetlist.append(nondet)
-        nondet_smallcclist.append(nondet_smallcc)
-        nondet_fullcclist.append(nondet_fullcc)
-        
-    
-    detlistdf = pd.DataFrame(detlist).explode(['translit','det','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    det_smallcclistdf = pd.DataFrame(det_smallcclist).explode(['translit','det_smallcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    det_fullcclistdf = pd.DataFrame(det_fullcclist).explode(['translit','det_fullcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    nondetlistdf = pd.DataFrame(nondetlist).explode(['translit','nondet','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    nondet_smallcclistdf = pd.DataFrame(nondet_smallcclist).explode(['translit','nondet_smallcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    nondet_fullcclistdf = pd.DataFrame(nondet_fullcclist).explode(['translit','nondet_fullcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-
-    return merge_multiple(dfs=
-                          [
-detlistdf,
-det_smallcclistdf,
-det_fullcclistdf,
-nondetlistdf,
-nondet_smallcclistdf,
-nondet_fullcclistdf,
-                          ]
-                          )
+    return transliterated_token

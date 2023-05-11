@@ -1,6 +1,15 @@
 import pynini as pn
 
 
+TOKEN_MAPPINGS = {}
+
+
+def get_token_mappings(path):
+    if path not in TOKEN_MAPPINGS:
+        TOKEN_MAPPINGS[path] = pn.string_file(path).optimize()
+    return TOKEN_MAPPINGS[path]
+
+
 malti2arabi_2char = pn.string_file('mappings/malti2arabi_2char.map').optimize()
 arabic2arabic = pn.string_file('mappings/arabic2arabic.map').optimize()
 malti2arabi_1char = pn.string_file('mappings/malti2arabi_1char.map').optimize()
@@ -9,8 +18,6 @@ final_vowels = pn.string_file('mappings/final_vowels.map').optimize()
 special = pn.string_file('mappings/special.map').optimize()
 everything_else = pn.string_file('mappings/everything_else.map').optimize()
 alif_initial = pn.string_file('mappings/alif_initial.map').optimize()
-baby_closed_class = pn.string_file('mappings/baby_closed_class.map').optimize()
-baby_closed_class_deterministic = pn.string_file('mappings_deterministic/baby_closed_class_deterministic.map').optimize()
 
 sigma_malti = pn.project(malti2arabi_1char,'input')
 sigma_arabi = pn.project(arabic2arabic,'output') 
@@ -44,7 +51,5 @@ special_deterministic = pn.string_file('mappings_deterministic/special_determini
 diacs = 'ًٌٍَُِّْ'
 dediac_cross = pn.string_file('mappings/dediac.map')
 dediac = pn.cdrewrite(dediac_cross,'','',sigma.closure())
-
-augmented_closed_class = pn.string_file('mappings/augmented_closed_class.map').optimize()
 
 # words = pn.string_file('../data/arabi_data/tn-maghreb-words.txt').optimize() @ dediac
