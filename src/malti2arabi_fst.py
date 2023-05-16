@@ -1,5 +1,15 @@
 import pynini as pn
 # 
+TOKEN_MAPPINGS = {}
+
+
+def get_token_mappings(path):
+    if path not in TOKEN_MAPPINGS:
+        TOKEN_MAPPINGS[path] = pn.string_file(path).optimize()
+    return TOKEN_MAPPINGS[path]
+
+
+
 
 malti2arabi_2char_nondet = pn.string_file('mappings/malti2arabi_2char.map').optimize()
 malti2arabi_nondet = pn.string_file('mappings/malti2arabi_1char.map').optimize()
@@ -8,10 +18,10 @@ final_vowels_nondet = pn.string_file('mappings/final_vowels.map').optimize()
 special_nondet = pn.string_file('mappings/special.map').optimize()
 alif_initial_nondet = pn.string_file('mappings/alif_initial.map').optimize()
 
+
 arabic2arabic = pn.string_file('mappings/arabic2arabic.map').optimize()
 everything_else = pn.string_file('mappings/everything_else.map').optimize()
-
-
+alif_initial = pn.string_file('mappings/alif_initial.map').optimize()
 sigma_malti = pn.project(malti2arabi_nondet,'input')
 sigma_arabi = pn.project(arabic2arabic,'output') 
 
@@ -66,10 +76,5 @@ translit_fst_det = (rwr_first_det @ second_fsts_det.closure()).optimize()
 diacs = 'ًٌٍَُِّْ'
 dediac_cross = pn.string_file('mappings/dediac.map')
 dediac = pn.cdrewrite(dediac_cross,'','',sigma.closure())
-
-#closed class
-augmented_closed_class = pn.string_file('mappings/augmented_closed_class.map').optimize()
-baby_closed_class = pn.string_file('mappings/baby_closed_class.map').optimize()
-baby_closed_class_deterministic = pn.string_file('mappings_deterministic/baby_closed_class_deterministic.map').optimize()
 
 # words = pn.string_file('../data/arabi_data/tn-maghreb-words.txt').optimize() @ dediac
