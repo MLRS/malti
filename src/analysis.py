@@ -1,21 +1,32 @@
 import numpy as np
 import pandas as pd
+from malti2arabi_fst import get_token_mappings
 
 from token_rankers import SubTokensCountRanker, WordModelScoreRanker, CharacterModelScoreRanker
-from translit import dediacritise_non_malti_accents, strip_plus, translit_word, \
-    translit_deterministic, dediac_fst
+from translit import dediacritise_non_malti_accents, strip_plus, translit_word,  dediac_fst
 
 SUB_TOKENS_COUNT_RANKER = SubTokensCountRanker("CAMeL-Lab/bert-base-arabic-camelbert-mix")
-WORD_MODEL_SCORE_RANKER = WordModelScoreRanker("../data/arabi_data/arabic_lm/aggregated_country/lm/word/tn-maghreb.arpa")
-CHARACTER_MODEL_SCORE_RANKER = CharacterModelScoreRanker("../data/arabi_data/arabic_lm/aggregated_country/lm/char/tn-maghreb.arpa")
+WORD_MODEL_SCORE_RANKER_TUNIS = WordModelScoreRanker("../data/arabi_data/arabic_lm/aggregated_country/lm/word/tn-maghreb.arpa")
+CHARACTER_MODEL_SCORE_RANKER_TUNIS = CharacterModelScoreRanker("../data/arabi_data/arabic_lm/aggregated_country/lm/char/tn-maghreb.arpa")
+
+WORD_MODEL_SCORE_RANKER_MAGHREB = WordModelScoreRanker('../data/arabi_data/arabic_lm/aggregated_region/lm/word/maghreb.arpa')
+CHARACTER_MODEL_SCORE_RANKER_MAGHREB = CharacterModelScoreRanker('../data/arabi_data/arabic_lm/aggregated_region/lm/char/maghreb.arpa')
 
 SMALL_CLOSED_CLASS = ["mappings/baby_closed_class.map"]
 FULL_CLOSED_CLASS = [*SMALL_CLOSED_CLASS, "mappings/augmented_closed_class.map"]
 
-words_df= pd.read_fwf("../data/arabi_data/tn-maghreb-words.txt", header=None).rename(columns={0:'words'})
-words_df["dediac"] = pd.Series([dediac_fst(x) for x in words_df['words']])
 
-langmodelset = set(words_df["dediac"])
+words_df_maghreb= pd.read_fwf('../data/arabi_data/region_maghreb-words.txt',header=None).rename(columns={0:'words'})
+words_df_maghreb = words_df_maghreb[~words_df_maghreb['words'].isna()]
+words_df_maghreb['dediac'] = pd.Series([dediac_fst(x) for x in words_df_maghreb['words']])
+
+words_df_tunis= pd.read_fwf('../data/arabi_data/country_tn-maghreb-words.txt',header=None).rename(columns={0:'words'})
+words_df_tunis = words_df_tunis[~words_df_tunis['words'].isna()]
+words_df_tunis['dediac'] = pd.Series([dediac_fst(x) for x in words_df_tunis['words']])
+
+
+langmodelset_maghreb =  set(words_df_maghreb['dediac'])
+langmodelset_tunis =  set(words_df_tunis['dediac'])
 
 
 def transliterate_and_get_scores(word, token_mappings, name="translit", fsttype="non-det"):
@@ -24,12 +35,9 @@ def transliterate_and_get_scores(word, token_mappings, name="translit", fsttype=
         "word_normalized": dediacritise_non_malti_accents(word).lower(),
     }
 
-    if fsttype == "det":
-        alternatives = [translit_deterministic(translit_dict["word_normalized"], token_mappings)]
-    elif fsttype == "non-det":
-        alternatives = translit_word(translit_dict["word_normalized"], token_mappings)
-    else:
-        raise Exception("wrong fsttype")
+    backoffs = [get_token_mappings(path) for path in token_mappings]
+    
+    alternatives = translit_word(translit_dict['word_normalized'], backoffs,fsttype == "non-det")
 
     alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
 
@@ -38,10 +46,13 @@ def transliterate_and_get_scores(word, token_mappings, name="translit", fsttype=
     translit_dict["translit"] = alternatives  # keep this, in order to merge later
     translit_dict["translit_stripped"] = [strip_plus(x) for x in alternatives]
     translit_dict["subtokens"] = SUB_TOKENS_COUNT_RANKER.score(alternatives)
-    translit_dict["wordmodel_score"] = WORD_MODEL_SCORE_RANKER.score(alternatives)
-    translit_dict["charmodel_score"] = CHARACTER_MODEL_SCORE_RANKER.score(alternatives)
+    translit_dict["wordmodel_tunis_score"] = WORD_MODEL_SCORE_RANKER_TUNIS.score(alternatives)
+    translit_dict["wordmodel_maghreb_score"] = WORD_MODEL_SCORE_RANKER_MAGHREB.score(alternatives)
+    translit_dict["charmodel_tunis_score"] = CHARACTER_MODEL_SCORE_RANKER_TUNIS.score(alternatives)
+    translit_dict["charmodel_maghreb_score"] = CHARACTER_MODEL_SCORE_RANKER_MAGHREB.score(alternatives)
     translit_dict["capitalized"] = any(map(lambda character: character.isupper(), word))
-    translit_dict["in_langmodel"] = [x in langmodelset for x in translit_dict["translit_stripped"]]
+    translit_dict['in_langmodel_tunis'] = [x in langmodelset_tunis for x in translit_dict['translit_stripped']]
+    translit_dict['in_langmodel_maghreb'] = [x in langmodelset_maghreb for x in translit_dict['translit_stripped']]
 
     return translit_dict
 
@@ -78,7 +89,7 @@ def merge_multiple(dfs):
     for df in dfs[1:]:
         first = first.merge(df,how='outer')
 
-    return first.sort_values('wordmodel_score',ascending=False)[[
+    return first.sort_values('wordmodel_maghreb_score',ascending=False)[[
         'word_raw',
         'word_normalized',
         'freq',
@@ -88,12 +99,15 @@ def merge_multiple(dfs):
         'det_fullcc',
         'nondet',
         'nondet_smallcc',
-        'nondet_fullcc',
+        'nondet_fullcc',        
         'translit_stripped',
-        'wordmodel_score',
-        'charmodel_score',
         'capitalized',
-        'in_langmodel',
+        'wordmodel_tunis_score',
+        'charmodel_tunis_score',
+        'in_langmodel_tunis',
+        'wordmodel_maghreb_score',
+        'charmodel_maghreb_score',
+        'in_langmodel_maghreb',
         'subtokens',
         ]]
 
@@ -125,12 +139,12 @@ def translit_dataset(word_hist):
         nondet_fullcclist.append(nondet_fullcc)
 
 
-    detlistdf = pd.DataFrame(detlist).explode(['translit','det','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    det_smallcclistdf = pd.DataFrame(det_smallcclist).explode(['translit','det_smallcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    det_fullcclistdf = pd.DataFrame(det_fullcclist).explode(['translit','det_fullcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    nondetlistdf = pd.DataFrame(nondetlist).explode(['translit','nondet','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    nondet_smallcclistdf = pd.DataFrame(nondet_smallcclist).explode(['translit','nondet_smallcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
-    nondet_fullcclistdf = pd.DataFrame(nondet_fullcclist).explode(['translit','nondet_fullcc','translit_stripped','wordmodel_score','charmodel_score','in_langmodel','subtokens'])
+    detlistdf = pd.DataFrame(detlist).explode(['translit','det','translit_stripped','wordmodel_tunis_score','wordmodel_maghreb_score','charmodel_tunis_score','charmodel_maghreb_score','in_langmodel_tunis','in_langmodel_maghreb','subtokens'])
+    det_smallcclistdf = pd.DataFrame(det_smallcclist).explode(['translit','det_smallcc','translit_stripped','wordmodel_tunis_score','wordmodel_maghreb_score','charmodel_tunis_score','charmodel_maghreb_score','in_langmodel_tunis','in_langmodel_maghreb','subtokens'])
+    det_fullcclistdf = pd.DataFrame(det_fullcclist).explode(['translit','det_fullcc','translit_stripped','wordmodel_tunis_score','wordmodel_maghreb_score','charmodel_tunis_score','charmodel_maghreb_score','in_langmodel_tunis','in_langmodel_maghreb','subtokens'])
+    nondetlistdf = pd.DataFrame(nondetlist).explode(['translit','nondet','translit_stripped','wordmodel_tunis_score','wordmodel_maghreb_score','charmodel_tunis_score','charmodel_maghreb_score','in_langmodel_tunis','in_langmodel_maghreb','subtokens'])
+    nondet_smallcclistdf = pd.DataFrame(nondet_smallcclist).explode(['translit','nondet_smallcc','translit_stripped','wordmodel_tunis_score','wordmodel_maghreb_score','charmodel_tunis_score','charmodel_maghreb_score','in_langmodel_tunis','in_langmodel_maghreb','subtokens'])
+    nondet_fullcclistdf = pd.DataFrame(nondet_fullcclist).explode(['translit','nondet_fullcc','translit_stripped','wordmodel_tunis_score','wordmodel_maghreb_score','charmodel_tunis_score','charmodel_maghreb_score','in_langmodel_tunis','in_langmodel_maghreb','subtokens'])
 
     return merge_multiple(dfs=
                           [
