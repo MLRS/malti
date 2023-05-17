@@ -96,12 +96,26 @@ def dediacritise_non_malti_accents(text: str, diacritics_to_keep: str = "ċġħ�
                               + character.group() \
                               + normalised_text[character.end():]
     return normalised_text
-# 
 
 
-def translit_and_rank_options(token: str,
-                              token_mappings: list[str] = None,
-                              token_rankers: list[TokenRanker] = None):
+def transliterate(token: str,
+                  token_mappings: list[str] = None,
+                  token_rankers: list[TokenRanker] = None):
+    """
+    Transliterates a Maltese token to a corresponding Arabic token.
+
+    :param token: The token to transliterate.
+    :param token_mappings: The token mappings to use in addition to the character mappings.
+    :param token_rankers: The rankers to use when for non-deterministic character mappings.
+                          The order specifies which ranker to apply first & which rankers to use for tie-breaks.
+                          When tie-breaks cannot be resolved after going through all rankers,
+                          these are resolved using :class:`RandomRanker`.
+                          When this is unspecified, a deterministic mapping is used.
+    :return: The transliterated token.
+             When the transliterated token maps to multiple tokens in the target,
+             these are returned as a single string joined with a `" "`.
+    """
+
     if token_rankers is None:
         token_rankers = []
     if token_mappings is None:
@@ -123,8 +137,9 @@ def translit_and_rank_options(token: str,
     lowered = normalized.lower()
 
     backoffs = [get_token_mappings(path) for path in token_mappings]
-    
-    alternatives = translit_word(lowered, backoffs, token_rankers is not None)
+
+    is_non_deterministic = len(token_rankers) > 0
+    alternatives = translit_word(lowered, backoffs, is_non_deterministic)
 
     alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
 
@@ -132,6 +147,30 @@ def translit_and_rank_options(token: str,
         logging.warning(f'No valid alternatives for token "{token}", choosing same token')
         transliterated_token = token
     else:
-        transliterated_token = choose(alternatives) if token_rankers else alternatives[0]
+        transliterated_token = choose(alternatives) if is_non_deterministic else alternatives[0]
 
     return transliterated_token
+
+
+def transliterate_sequence(tokens: list[str],
+                           token_mappings: list[str] = None,
+                           token_rankers: list[TokenRanker] = None) -> list[str]:
+    """
+    Transliterates a sequence of Maltese tokens to a corresponding sequence of Arabic tokens.
+
+    :param tokens: The tokens to transliterate.
+                   Each token should be tokenized with the rules in mind
+                   as otherwise this might lead to different behaviour than expected.
+    :param token_mappings: The token mappings to use in addition to the character mappings.
+    :param token_rankers: The rankers to use when for non-deterministic character mappings.
+                          The order specifies which ranker to apply first & which rankers to use for tie-breaks.
+                          When tie-breaks cannot be resolved after going through all rankers,
+                          these are resolved using :class:`RandomRanker`.
+                          When this is unspecified, a deterministic mapping is used.
+    :return: The transliterated tokens.
+             The resulting sequence should be of equal length to the source sequence.
+             A token can map to no tokens or multiple tokens, but the resulting element in the sequence is retrained
+             in both cases, joining with a `" "` for multiple tokens.
+    """
+
+    return list(map(lambda token: transliterate(token, token_mappings, token_rankers), tokens))
