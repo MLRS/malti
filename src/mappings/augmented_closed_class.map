@@ -92,7 +92,7 @@
 <BOS>ruħu<EOS>	تاع ال+
 <BOS>nofs<EOS>	نفص
 <BOS>tieni<EOS>	ثاني
-<BOS>sejrin<EOS>	سايرين
+<BOS>qiegħda<EOS>	قاعدة
 <BOS>le<EOS>	لي
 <BOS>talanqas<EOS>	تاع الانقص
 <BOS>hawn<EOS>	هون
@@ -101,13 +101,13 @@
 <BOS>ebda<EOS>	ابدا
 <BOS>'il<EOS>	لل+
 <BOS>liema<EOS>	لاما
-<BOS>qiegħed<EOS>	قاعد
+<BOS>qegħdin<EOS>	قاعدين
 <BOS>fiha<EOS>	فيها
 <BOS>minnhom<EOS>	منهم
 <BOS>għadu<EOS>	عنده
 <BOS>talli<EOS>	تاع اللي
 <BOS>ġaladarba<EOS>	جا لاداربا
-<BOS>sabiex<EOS>	sabiex
+<BOS>sabiex<EOS>	سباش
 <BOS>għalih<EOS>	عليه
 <BOS>ħaddieħor<EOS>	حد آخر
 <BOS>sakemm<EOS>	سكم
@@ -117,11 +117,11 @@
 <BOS>konna<EOS>	كنا
 <BOS>skont<EOS>	سكنت
 <BOS>ikunu<EOS>	يكونوا
-<BOS>ġej<EOS>	جاي
+<BOS>sejrin<EOS>	سايرين
 <BOS>anki<EOS>	انكي
 <BOS>mela<EOS>	مالا
 <BOS>nkunu<EOS>	نكونوا
-<BOS>qiegħda<EOS>	قاعدة
+<BOS>qiegħed<EOS>	قاعد
 <BOS>fost<EOS>	فوسط
 <BOS>ġo<EOS>	جوا
 <BOS>stess<EOS>	ستس
@@ -133,7 +133,6 @@
 <BOS>xulxin<EOS>	ال+
 <BOS>donnu<EOS>	ظنه
 <BOS>għad<EOS>	عند
-<BOS>qegħdin<EOS>	قاعدين
 <BOS>għalkemm<EOS>	على كم
 <BOS>jiena<EOS>	يانا
 <BOS>għalhekk<EOS>	على هيك
@@ -151,7 +150,6 @@
 <BOS>minnha<EOS>	منها
 <BOS>ħalli<EOS>	خلي
 <BOS>qabel<EOS>	قبل
-<BOS>għaddej<EOS>	عادي
 <BOS>ħlief<EOS>	خلاف
 <BOS>madwar<EOS>	مدوار
 <BOS>magħhom<EOS>	معهم
@@ -201,7 +199,6 @@
 <BOS>inkella<EOS>	انكلا
 <BOS>inkunu<EOS>	نكونوا
 <BOS>ħamsa<EOS>	خمسة
-<BOS>ġejjin<EOS>	جايين
 <BOS>qrib<EOS>	قرب
 <BOS>skond<EOS>	سكند
 <BOS>bejniethom<EOS>	بيناتهم
@@ -218,16 +215,12 @@
 <BOS>kellix<EOS>	كان ليش
 <BOS>xħin<EOS>	شحين
 <BOS>jkunx<EOS>	يكونش
-<BOS>ġejja<EOS>	جاية
-<BOS>nieqsa<EOS>	ناقصة
 <BOS>minna<EOS>	منا
 <BOS>daqskemm<EOS>	دقسكم
 <BOS>la<EOS>	لا
 <BOS>hawnx<EOS>	هونش
 <BOS>'l<EOS>	لل
 <BOS>uħud<EOS>	وحود
-<BOS>għaddejja<EOS>	عادية
-<BOS>għaddejjin<EOS>	عدايين
 <BOS>kulħadd<EOS>	كل حد
 <BOS>kulmeta<EOS>	كل متى
 <BOS>magħna<EOS>	معنا
@@ -242,7 +235,6 @@
 <BOS>kif<EOS>	كيف
 <BOS>ħdax-il<EOS>	احدعشل
 <BOS>wħud<EOS>	وحود
-<BOS>sejjer<EOS>	ساير
 <BOS>bija<EOS>	بي
 <BOS>għalija<EOS>	علي
 <BOS>ħdejh<EOS>	حديه
@@ -257,10 +249,6 @@
 <BOS>elf<EOS>	الف
 <BOS>sittin<EOS>	ستين
 <BOS>żewġt<EOS>	زوجة
-<BOS>ħiereġ<EOS>	خارج
-<BOS>ħierġa<EOS>	خارجة
-<BOS>mejjet<EOS>	ميت
-<BOS>wieqaf<EOS>	واقف
 <BOS>favur<EOS>	فافور
 <BOS>ġewwa<EOS>	جوا
 <BOS>in<EOS>	ان
@@ -280,10 +268,7 @@
 <BOS>insomma<EOS>	انسوما
 <BOS>tkunx<EOS>	تكونش
 <BOS>lilha<EOS>	لها
-<BOS>dieħla<EOS>	داخلة
-<BOS>miexi<EOS>	ماشي
 <BOS>intix<EOS>	انتيش
-<BOS>siekta<EOS>	ساكتة
 <BOS>flok<EOS>	فلوك
 <BOS>inkluż<EOS>	انكلوز
 <BOS>tul<EOS>	طول
@@ -315,9 +300,6 @@
 <BOS>tmenin<EOS>	ثمانين
 <BOS>hux<EOS>	هوش
 <BOS>tmienja<EOS>	ثمانية
-<BOS>mejtin<EOS>	ميتين
-<BOS>nieqes<EOS>	ناقص
-<BOS>telgħin<EOS>	طالعين
 <BOS>maġenbkom<EOS>	من جنبكم
 <BOS>bik<EOS>	بك
 <BOS>fuqi<EOS>	فوقي
@@ -344,16 +326,6 @@
 <BOS>tletin<EOS>	ثلاثين
 <BOS>hix<EOS>	هيش
 <BOS>tużżana<EOS>	دزينة
-<BOS>dieħel<EOS>	داخل
-<BOS>imsiefer<EOS>	مسافر
-<BOS>liebes<EOS>	لابس
-<BOS>liebsa<EOS>	لابسة
-<BOS>mejta<EOS>	ميتة
-<BOS>mexjin<EOS>	ماشيين
-<BOS>neqsin<EOS>	ناقصين
-<BOS>niexef<EOS>	ناشف
-<BOS>weqfin<EOS>	واقفين
-<BOS>xieraq<EOS>	شارق
 <BOS>biswit<EOS>	باسوة
 <BOS>permezz<EOS>	برمدز
 <BOS>bħalhom<EOS>	بحالهم
@@ -402,17 +374,6 @@
 <BOS>nofsu<EOS>	نفصه
 <BOS>għandu<EOS>	عنده
 <BOS>sebgħa<EOS>	سبعة
-<BOS>deħlin<EOS>	داخلين
-<BOS>ħerġin<EOS>	خارجين
-<BOS>ħieles<EOS>	خالص
-<BOS>ħielsa<EOS>	خالصة
-<BOS>ħirġin<EOS>	خارجين
-<BOS>kiefer<EOS>	كافر
-<BOS>lebsin<EOS>	لابسين
-<BOS>msiefra<EOS>	مسافرة
-<BOS>niżlin<EOS>	نازلين
-<BOS>resqin<EOS>	رسقن
-<BOS>sejra<EOS>	سايرة
 <BOS>apparti<EOS>	ابارتي
 <BOS>qis<EOS>	قيس
 <BOS>bħali<EOS>	بحالي
@@ -500,22 +461,6 @@
 <BOS>kwart<EOS>	كوارت
 <BOS>terz<EOS>	تردز
 <BOS>għaliex<EOS>	علاش
-<BOS>acting<EOS>	اكتنج
-<BOS>bieżel<EOS>	بازل
-<BOS>għaddejin<EOS>	عدايين
-<BOS>għarqanin<EOS>	عرقانين
-<BOS>għarwenin<EOS>	عريانين
-<BOS>imdawrin<EOS>	مدورين
-<BOS>libsin<EOS>	لابسين
-<BOS>neżlin<EOS>	نازلين
-<BOS>niedi<EOS>	نادي
-<BOS>nieżel<EOS>	نازل
-<BOS>nieżla<EOS>	نازلة
-<BOS>rieqed<EOS>	راقد
-<BOS>tielgħa<EOS>	طالعة
-<BOS>wieqfa<EOS>	واقفة
-<BOS>wisgħin<EOS>	واسعين
-<BOS>żejjen<EOS>	زين
 <BOS>dment<EOS>	دمنت
 <BOS>favuriha<EOS>	ففرها
 <BOS>għajr<EOS>	غير
