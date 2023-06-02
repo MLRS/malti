@@ -7,8 +7,8 @@ from sklearn.feature_extraction.text import strip_accents_unicode
 from malti2arabi_fst import *
 from token_rankers import RandomRanker, TokenRanker
 
+
 def dediac_fst(text):
-    text = text.replace('[','\[').replace(']','\]')
     try:
         return (text @ dediac).string()
     except:
@@ -24,8 +24,6 @@ def get_paths(fst,words_only=False):
 
 
 def apply_translit_fst_nondet(tok,backoff_fsts):
-    tok = tok.replace('[','\[').replace(']','\]')
-    tok = (f'<BOS>{tok}<EOS>')
     if backoff_fsts:
         backoff =  tok @ pn.union(*backoff_fsts).optimize() @ dediac
         if get_paths(backoff):
@@ -34,10 +32,9 @@ def apply_translit_fst_nondet(tok,backoff_fsts):
             return tok  @ translit_fst_nondet @ dediac
     else:
         return tok  @ translit_fst_nondet @ dediac
-    # 
+
+
 def apply_translit_fst_det(tok,backoff_fsts):
-    tok = tok.replace('[','\[').replace(']','\]')
-    tok = (f'<BOS>{tok}<EOS>')
     if backoff_fsts:
         backoff =  tok @ pn.union(*backoff_fsts).optimize() @ dediac
         if get_paths(backoff):
@@ -47,28 +44,35 @@ def apply_translit_fst_det(tok,backoff_fsts):
     else:
         return tok  @ translit_fst_det @ dediac
 
+
 def filter_edge_diacritics(options):
     return [y for y in options if y[0] not in diacs and y[-1] not in diacs]
 
-def translit_word(lowered_tok,backoffs,is_non_deterministic): #select on merged but return unmerged
+
+def translit_word(token, backoffs, is_non_deterministic):
+    def escape_token_characters(token):
+        return token.replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]")
+
+    escaped_token = escape_token_characters(token)
+    escaped_token = f"<BOS>{escaped_token}<EOS>"
     if is_non_deterministic:
-        tok_fst = apply_translit_fst_nondet(lowered_tok,backoffs)
+        tok_fst = apply_translit_fst_nondet(escaped_token, backoffs)
     else:
-        tok_fst = apply_translit_fst_det(lowered_tok,backoffs)
+        tok_fst = apply_translit_fst_det(escaped_token, backoffs)
 
     translit_toks = get_paths(tok_fst,words_only=True) 
     if not translit_toks:
         print(f'error is_non_deterministic:{is_non_deterministic}fst on:',lowered_tok)
         return ['#na']
     try:
-        translit_toks = filter_edge_diacritics(translit_toks) # TODO: might not apply in current system, check what this does 
+        translit_toks = filter_edge_diacritics(translit_toks)  # TODO: might not apply in current system, check what this does
     except:
         if not is_non_deterministic=='det':
             pass
         else:
-            print('err filtering diacs',translit_toks,lowered_tok)
-    
-    translit_toks = [ dediac_fst(x) for x in translit_toks]  # dediacritize
+            logging.warning("Encountered an error while filtering diacritics", translit_toks, escaped_token)
+
+    translit_toks = [dediac_fst(escape_token_characters(x)) for x in translit_toks]
     return translit_toks
 
 
@@ -143,11 +147,7 @@ def transliterate(token: str,
 
     alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
 
-    if len(alternatives) == 0:
-        logging.warning(f'No valid alternatives for token "{token}", choosing same token')
-        transliterated_token = token
-    else:
-        transliterated_token = choose(alternatives) if is_non_deterministic else alternatives[0]
+    transliterated_token = choose(alternatives) if is_non_deterministic else alternatives[0]
 
     return transliterated_token
 
