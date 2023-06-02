@@ -1,7 +1,6 @@
 import logging
 import re
 
-import numpy as np
 from sklearn.feature_extraction.text import strip_accents_unicode
 
 from malti2arabi_fst import *
@@ -12,8 +11,8 @@ def dediac_fst(text):
     try:
         return (text @ dediac).string()
     except:
-        return np.nan
-    
+        return text
+
 
 def get_paths(fst,words_only=False):
     paths = list(fst.paths().items())
@@ -62,8 +61,8 @@ def translit_word(token, backoffs, is_non_deterministic):
 
     translit_toks = get_paths(tok_fst,words_only=True) 
     if not translit_toks:
-        print(f'error is_non_deterministic:{is_non_deterministic}fst on:',lowered_tok)
-        return ['#na']
+        logging.warning(f'No valid alternatives for token "{token}", falling-back to original token.')
+        return [token]
     try:
         translit_toks = filter_edge_diacritics(translit_toks)  # TODO: might not apply in current system, check what this does
     except:
@@ -81,7 +80,8 @@ def strip_plus(x):
         return x
     else:
         return x.rstrip("+")
-    
+
+
 def dediacritise_non_malti_accents(text: str, diacritics_to_keep: str = "ċġħżĊĠĦŻ") -> str:
     """
     Removes diacritics from the text.
@@ -133,7 +133,7 @@ def transliterate(token: str,
                 break
         if len(alternatives) > 1:
             # unresolved ties
-            logging.warning(f'Choosing randomly for token "{token}"')
+            logging.warning(f'Choosing randomly for token "{token}" from {alternatives}')
             alternatives = RandomRanker().filter_best(alternatives)
         return alternatives[0]
 
@@ -144,7 +144,8 @@ def transliterate(token: str,
 
     is_non_deterministic = len(token_rankers) > 0
     alternatives = translit_word(lowered, backoffs, is_non_deterministic)
-
+    alternatives = list(set(alternatives))  # filter out duplicates
+    assert len(alternatives) > 0
     alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
 
     transliterated_token = choose(alternatives) if is_non_deterministic else alternatives[0]
