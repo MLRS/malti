@@ -12,8 +12,8 @@ CHARACTER_MODEL_SCORE_RANKER_TUNIS = CharacterModelScoreRanker("../data/arabi_da
 WORD_MODEL_SCORE_RANKER_MAGHREB = WordModelScoreRanker('../data/arabi_data/arabic_lm/aggregated_region/lm/word/maghreb.arpa')
 CHARACTER_MODEL_SCORE_RANKER_MAGHREB = CharacterModelScoreRanker('../data/arabi_data/arabic_lm/aggregated_region/lm/char/maghreb.arpa')
 
-SMALL_CLOSED_CLASS = ["mappings/baby_closed_class.map"]
-FULL_CLOSED_CLASS = [*SMALL_CLOSED_CLASS, "mappings/augmented_closed_class.map"]
+SMALL_CLOSED_CLASS = ["token_mappings/small_closed_class.map"]
+FULL_CLOSED_CLASS = [*SMALL_CLOSED_CLASS, "token_mappings/additional_closed_class.map"]
 
 
 words_df_maghreb= pd.read_fwf('../data/arabi_data/region_maghreb-words.txt',header=None).rename(columns={0:'words'})

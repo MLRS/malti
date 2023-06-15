@@ -27,9 +27,9 @@ for token_mappings in "full" "small" ""; do
 
       args+=("--token_mappings")
       if [[ ${token_mappings} == "full" ]]; then
-        args+=("mappings/augmented_closed_class.map" "mappings/baby_closed_class.map")
+        args+=("token_mappings/additional_closed_class.map" "token_mappings/small_closed_class.map")
       elif [[ ${token_mappings} == "small" ]]; then
-        args+=("mappings/baby_closed_class.map")
+        args+=("token_mappings/small_closed_class.map")
       fi
     else # character mappings only
       system=""
@@ -56,7 +56,7 @@ for token_mappings in "full" "small" ""; do
       fi
 
       # fallback ranker
-      if [[ ${ranker} == "*_maghreb" ]]; then
+      if [[ ${ranker} = *_maghreb ]]; then
         args+=("${MODELS_PATH}/aggregated_region/lm/char/maghreb.arpa")
       else
         args+=("${MODELS_PATH}/aggregated_country/lm/char/tn-maghreb.arpa")

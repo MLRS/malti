@@ -1,5 +1,5 @@
 import pynini as pn
-# 
+
 TOKEN_MAPPINGS = {}
 
 
@@ -11,17 +11,17 @@ def get_token_mappings(path):
 
 
 
-malti2arabi_2char_nondet = pn.string_file('mappings/malti2arabi_2char.map').optimize()
-malti2arabi_nondet = pn.string_file('mappings/malti2arabi_1char.map').optimize()
-shadda_nondet = pn.string_file('mappings/shadda.map').optimize()
-final_vowels_nondet = pn.string_file('mappings/final_vowels.map').optimize()
-special_nondet = pn.string_file('mappings/special.map').optimize()
-alif_initial_nondet = pn.string_file('mappings/alif_initial.map').optimize()
+malti2arabi_2char_nondet = pn.string_file('character_non-deterministic_mappings/malti2arabi_2char.map').optimize()
+malti2arabi_nondet = pn.string_file('character_non-deterministic_mappings/malti2arabi_1char.map').optimize()
+shadda_nondet = pn.string_file('character_non-deterministic_mappings/shadda.map').optimize()
+final_vowels_nondet = pn.string_file('character_non-deterministic_mappings/final_vowels.map').optimize()
+special_nondet = pn.string_file('character_non-deterministic_mappings/special.map').optimize()
+alif_initial_nondet = pn.string_file('character_non-deterministic_mappings/alif_initial.map').optimize()
 
 
-arabic2arabic = pn.string_file('mappings/arabic2arabic.map').optimize()
-everything_else = pn.string_file('mappings/everything_else.map').optimize()
-alif_initial = pn.string_file('mappings/alif_initial.map').optimize()
+arabic2arabic = pn.string_file('character_non-deterministic_mappings/arabic2arabic.map').optimize()
+everything_else = pn.string_file('character_non-deterministic_mappings/everything_else.map').optimize()
+alif_initial = pn.string_file('character_non-deterministic_mappings/alif_initial.map').optimize()
 sigma_malti = pn.project(malti2arabi_nondet,'input')
 sigma_arabi = pn.project(arabic2arabic,'output') 
 
@@ -49,10 +49,10 @@ second_fsts_nondet = pn.union(
 translit_fst_nondet = (rwr_first_nondet @ second_fsts_nondet.closure()).optimize()
 # 
 # deterministic
-malti2arabi_2char_det = pn.string_file('mappings_deterministic/malti2arabi_2char.map').optimize()
-malti2arabi_det= pn.string_file('mappings_deterministic/malti2arabi_1char_vowels_short.map').optimize()
-special_det = pn.string_file('mappings_deterministic/special_deterministic.map').optimize()
-shadda_det = pn.string_file('mappings_deterministic/shadda.map').optimize()
+malti2arabi_2char_det = pn.string_file('character_deterministic_mappings/malti2arabi_2char.map').optimize()
+malti2arabi_det= pn.string_file('character_deterministic_mappings/malti2arabi_1char_vowels_short.map').optimize()
+special_det = pn.string_file('character_deterministic_mappings/special_deterministic.map').optimize()
+shadda_det = pn.string_file('character_deterministic_mappings/shadda.map').optimize()
 
 
 rwr_first_fsts_det = pn.union(
@@ -74,7 +74,7 @@ translit_fst_det = (rwr_first_det @ second_fsts_det.closure()).optimize()
 
 #dediac
 diacs = 'ًٌٍَُِّْ'
-dediac_cross = pn.string_file('mappings/dediac.map')
+dediac_cross = pn.string_file('character_non-deterministic_mappings/dediac.map')
 dediac = pn.cdrewrite(dediac_cross,'','',sigma.closure())
 
 # words = pn.string_file('../data/arabi_data/tn-maghreb-words.txt').optimize() @ dediac
