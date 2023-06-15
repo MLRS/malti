@@ -66,6 +66,6 @@ for token_mappings in "full" "small" ""; do
     fi
 
     echo "========== $system =========="
-    python transliterate.py "${dataset}" "${DATA_PATH}/${path}" "${OUTPUT_PATH}/${system}/${path}" "${args[@]}"
+    python transliterate_cli.py "${dataset}" "${DATA_PATH}/${path}" "${OUTPUT_PATH}/${system}/${path}" "${args[@]}"
   done
 done

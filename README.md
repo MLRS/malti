@@ -1,3 +1,18 @@
+# Maltese Transliteration
+
+To transliterate Maltese you can:
+- Use the [command line interface](src/transliterate_cli.py):
+  ```shell
+  python transliterate_cli.py ${dataset} \
+    ${INPUT_PATH} \
+    ${OUTPUT_PATH} \
+    --rankers word_model_score character_model_score \
+    --ranker_models "../models/aggregated_country/lm/word/tn-maghreb.arpa" "../models/aggregated_country/lm/char/tn-maghreb.arpa" \
+    --token_mappings mappings/small_closed_class.map mappings/additional_closed_class.map
+  ```
+  Execute `python transliterate_cli.py -h` to access the documentation.
+  Alternatively, refer to [transliterate.sh](src/transliterate.sh) which transliterates a given dataset in all supported pipelines.
+
 to run pynini locally (tried on mac), I could only do it using conda
 
 ```

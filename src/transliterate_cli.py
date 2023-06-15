@@ -62,8 +62,8 @@ def main():
     parser.add_argument("--ranker_models",
                         type=str,
                         nargs="+",
-                        help="The models to use for each token ranker."
-                             "The order specified should match that specified for the rankers."
+                        help="The models to use for each token ranker. "
+                             "The order specified should match that specified for the rankers. "
                              "These are optional & should be left empty for rankers which don't require a model.")
     args = parser.parse_args()
 
