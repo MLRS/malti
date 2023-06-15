@@ -12,6 +12,20 @@ To transliterate Maltese you can:
   ```
   Execute `python transliterate_cli.py -h` to access the documentation.
   Alternatively, refer to [transliterate.sh](src/transliterate.sh) which transliterates a given dataset in all supported pipelines.
+- Through [Python code](src/transliterate.py):
+  ```python
+  from transliterate import transliterate_sequence
+  import token_rankers
+  
+  transliterate_sequence(
+    ["Il-", "ġurnata", "t-", "tajba", "!"],
+    ["token_mappings/small_closed_class.map", "token_mappings/additional_closed_class.map"],
+    [
+        token_rankers.WordModelScoreRanker("../models/aggregated_country/lm/word/tn-maghreb.arpa"),
+        token_rankers.CharacterModelScoreRanker("../models/aggregated_country/lm/char/tn-maghreb.arpa"),
+    ]
+  )
+  ```
 
 to run pynini locally (tried on mac), I could only do it using conda
 

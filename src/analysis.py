@@ -3,7 +3,7 @@ import pandas as pd
 from malti2arabi_fst import get_token_mappings
 
 from token_rankers import SubTokensCountRanker, WordModelScoreRanker, CharacterModelScoreRanker
-from translit import dediacritise_non_malti_accents, strip_plus, translit_word,  dediac_fst
+from transliterate import dediacritise_non_malti_accents, strip_plus, translit_word,  dediac_fst
 
 SUB_TOKENS_COUNT_RANKER = SubTokensCountRanker("CAMeL-Lab/bert-base-arabic-camelbert-mix")
 WORD_MODEL_SCORE_RANKER_TUNIS = WordModelScoreRanker("../data/arabi_data/arabic_lm/aggregated_country/lm/word/tn-maghreb.arpa")

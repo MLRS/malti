@@ -6,7 +6,7 @@ from typing import Optional
 
 import dataset_processors
 import token_rankers
-from translit import transliterate_sequence
+from transliterate import transliterate_sequence
 
 DATASET_PROCESSORS = {
     "mlrs_pos": dataset_processors.ConllDatasetProcessor,
