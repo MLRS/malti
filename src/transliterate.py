@@ -3,76 +3,8 @@ import re
 
 from sklearn.feature_extraction.text import strip_accents_unicode
 
-from malti2arabi_fst import *
+from malti2arabi_fst import translit_word
 from token_rankers import RandomRanker, TokenRanker
-
-
-def dediac_fst(text):
-    try:
-        return (text @ dediac).string()
-    except:
-        return text
-
-
-def get_paths(fst,words_only=False):
-    paths = list(fst.paths().items())
-    if words_only:
-        return [x[1] for x in paths]
-    else:
-        return paths
-
-
-def apply_translit_fst_nondet(tok,backoff_fsts):
-    if backoff_fsts:
-        backoff =  tok @ pn.union(*backoff_fsts).optimize() @ dediac
-        if get_paths(backoff):
-            return backoff
-        else:
-            return tok  @ translit_fst_nondet @ dediac
-    else:
-        return tok  @ translit_fst_nondet @ dediac
-
-
-def apply_translit_fst_det(tok,backoff_fsts):
-    if backoff_fsts:
-        backoff =  tok @ pn.union(*backoff_fsts).optimize() @ dediac
-        if get_paths(backoff):
-            return backoff
-        else:
-            return tok  @ translit_fst_det @ dediac
-    else:
-        return tok  @ translit_fst_det @ dediac
-
-
-def filter_edge_diacritics(options):
-    return [y for y in options if y[0] not in diacs and y[-1] not in diacs]
-
-
-def translit_word(token, backoffs, is_non_deterministic):
-    def escape_token_characters(token):
-        return token.replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]")
-
-    escaped_token = escape_token_characters(token)
-    escaped_token = f"<BOS>{escaped_token}<EOS>"
-    if is_non_deterministic:
-        tok_fst = apply_translit_fst_nondet(escaped_token, backoffs)
-    else:
-        tok_fst = apply_translit_fst_det(escaped_token, backoffs)
-
-    translit_toks = get_paths(tok_fst,words_only=True) 
-    if not translit_toks:
-        logging.warning(f'No valid alternatives for token "{token}", falling-back to original token.')
-        return [token]
-    try:
-        translit_toks = filter_edge_diacritics(translit_toks)  # TODO: might not apply in current system, check what this does
-    except:
-        if not is_non_deterministic=='det':
-            pass
-        else:
-            logging.warning("Encountered an error while filtering diacritics", translit_toks, escaped_token)
-
-    translit_toks = [dediac_fst(escape_token_characters(x)) for x in translit_toks]
-    return translit_toks
 
 
 def strip_plus(x):
@@ -140,10 +72,8 @@ def transliterate(token: str,
     normalized = dediacritise_non_malti_accents(token)
     lowered = normalized.lower()
 
-    backoffs = [get_token_mappings(path) for path in token_mappings]
-
     is_non_deterministic = len(token_rankers) > 0
-    alternatives = translit_word(lowered, backoffs, is_non_deterministic)
+    alternatives = translit_word(lowered, token_mappings, is_non_deterministic)
     alternatives = list(set(alternatives))  # filter out duplicates
     assert len(alternatives) > 0
     alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]

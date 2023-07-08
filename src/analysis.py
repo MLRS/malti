@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
-from malti2arabi_fst import get_token_mappings
 
 from token_rankers import SubTokensCountRanker, WordModelScoreRanker, CharacterModelScoreRanker
-from transliterate import dediacritise_non_malti_accents, strip_plus, translit_word,  dediac_fst
+from transliterate import dediacritise_non_malti_accents, strip_plus
+from malti2arabi_fst import dediac_fst, translit_word
 
 SUB_TOKENS_COUNT_RANKER = SubTokensCountRanker("CAMeL-Lab/bert-base-arabic-camelbert-mix")
 WORD_MODEL_SCORE_RANKER_TUNIS = WordModelScoreRanker("../data/arabi_data/arabic_lm/aggregated_country/lm/word/tn-maghreb.arpa")
@@ -35,9 +35,7 @@ def transliterate_and_get_scores(word, token_mappings, name="translit", fsttype=
         "word_normalized": dediacritise_non_malti_accents(word).lower(),
     }
 
-    backoffs = [get_token_mappings(path) for path in token_mappings]
-    
-    alternatives = translit_word(translit_dict['word_normalized'], backoffs,fsttype == "non-det")
+    alternatives = translit_word(translit_dict['word_normalized'], token_mappings, fsttype == "non-det")
 
     alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
 
