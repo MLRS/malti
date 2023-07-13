@@ -1,6 +1,7 @@
 # Maltese Transliteration
 
 A set of transliteration pipelines for Maltese texts to Arabic, implemented using finite-state machines.
+This work first appeared in [Exploring the Impact of Transliteration on NLP Performance: Treating Maltese as an Arabic Dialect](https://aclanthology.org/2023.cawl-1.4/).
 
 
 ## Usage
@@ -53,3 +54,26 @@ transliterate_sequence(
 ```
 
 For a single token, use `transliterate` instead.
+
+## Citations
+
+Cite this work as follows:
+```
+@inproceedings{micallef-etal-2023-maltese-transliteration,
+    title = "Exploring the Impact of Transliteration on {NLP} Performance for Low-Resource Languages: Treating {M}altese as an {A}rabic Dialect",
+    author = "Micallef, Kurt and
+              Eryani, Fadhl and
+              Habash, Nizar and
+              Bouamor, Houda and
+              Borg, Claudia",
+    booktitle = "Proceedings of the Workshop on Computation and Written Language (CAWL 2023)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.cawl-1.4",
+    pages = "22--32",
+}
+```
+
+For fine-tuning instructions & dataset references see: https://github.com/MLRS/BERTu/tree/2022.deeplo-1.10/finetune
