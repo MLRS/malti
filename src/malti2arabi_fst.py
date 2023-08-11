@@ -27,7 +27,7 @@ sigma_arabi = pn.project(arabic2arabic,'output')
 
 # SIGMA
 sigma_in = pn.project(pn.union(malti2arabi_nondet,special_nondet,arabic2arabic,final_vowels_nondet,everything_else),'input')
-sigma = pn.project(pn.union(sigma_in,special_nondet,final_vowels_nondet),'output').optimize()
+sigma = pn.project(pn.union(sigma_in,special_nondet,final_vowels_nondet,everything_else),'output').optimize()
 
 rwr_first_fsts_nondet = pn.union(
     malti2arabi_2char_nondet,
