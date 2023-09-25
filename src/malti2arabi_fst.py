@@ -7,7 +7,8 @@ TOKEN_MAPPINGS = {}
 
 def get_token_mappings(path):
     if path not in TOKEN_MAPPINGS:
-        TOKEN_MAPPINGS[path] = pn.string_file(path).optimize()
+        with open(path, "r", encoding="utf-8") as file:
+            TOKEN_MAPPINGS[path] = dict([tuple(line.strip().split("\t")) for line in file])
     return TOKEN_MAPPINGS[path]
 
 
@@ -92,26 +93,12 @@ def get_paths(fst,words_only=False):
         return paths
 
 
-def apply_translit_fst_nondet(tok, token_fst):
-    if token_fst:
-        backoff = tok @ pn.union(*token_fst).optimize() @ dediac
-        if get_paths(backoff):
-            return backoff
-        else:
-            return tok  @ translit_fst_nondet @ dediac
-    else:
-        return tok  @ translit_fst_nondet @ dediac
+def apply_translit_fst_nondet(tok):
+    return tok @ translit_fst_nondet @ dediac
 
 
-def apply_translit_fst_det(tok, token_fst):
-    if token_fst:
-        backoff = tok @ pn.union(*token_fst).optimize() @ dediac
-        if get_paths(backoff):
-            return backoff
-        else:
-            return tok  @ translit_fst_det @ dediac
-    else:
-        return tok  @ translit_fst_det @ dediac
+def apply_translit_fst_det(tok):
+    return tok @ translit_fst_det @ dediac
 
 
 def filter_edge_diacritics(options):
@@ -122,16 +109,19 @@ def translit_word(token, token_mappings, is_non_deterministic):
     def escape_token_characters(token):
         return token.replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]")
 
-    token_mappings = [get_token_mappings(path) for path in token_mappings or []]
-
-    escaped_token = escape_token_characters(token)
-    escaped_token = f"<BOS>{escaped_token}<EOS>"
-    if is_non_deterministic:
-        tok_fst = apply_translit_fst_nondet(escaped_token, token_mappings)
+    mapped_tokens = [get_token_mappings(path).get(token) for path in token_mappings or []]
+    mapped_tokens = [token for token in mapped_tokens if token is not None]
+    if len(mapped_tokens) > 0:
+        translit_toks = mapped_tokens[:1]
     else:
-        tok_fst = apply_translit_fst_det(escaped_token, token_mappings)
+        escaped_token = escape_token_characters(token)
+        escaped_token = f"<BOS>{escaped_token}<EOS>"
+        if is_non_deterministic:
+            tok_fst = apply_translit_fst_nondet(escaped_token)
+        else:
+            tok_fst = apply_translit_fst_det(escaped_token)
+        translit_toks = get_paths(tok_fst,words_only=True)
 
-    translit_toks = get_paths(tok_fst,words_only=True)
     if not translit_toks:
         logging.warning(f'No valid alternatives for token "{token}", falling-back to original token.')
         return [token]
