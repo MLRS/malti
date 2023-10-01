@@ -2,15 +2,7 @@ import logging
 
 import pynini as pn
 
-TOKEN_MAPPINGS = {}
-
-
-def get_token_mappings(path):
-    if path not in TOKEN_MAPPINGS:
-        with open(path, "r", encoding="utf-8") as file:
-            TOKEN_MAPPINGS[path] = dict([tuple(line.strip().split("\t")) for line in file])
-    return TOKEN_MAPPINGS[path]
-
+from token_mappings import get_token_mappings
 
 malti2arabi_2char_nondet = pn.string_file('character_non-deterministic_mappings/malti2arabi_2char.map').optimize()
 malti2arabi_nondet = pn.string_file('character_non-deterministic_mappings/malti2arabi_1char.map').optimize()
