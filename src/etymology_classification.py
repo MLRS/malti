@@ -5,6 +5,7 @@ import csv
 import itertools
 import logging
 import os
+import pickle
 import string
 import warnings
 from typing import Any
@@ -267,7 +268,7 @@ def read_data(file_name, label_column):
     return tokens, features, tags
 
 
-def evaluate(model, data, num_rounds, random_seed=None):
+def evaluate(model, data, num_rounds, output_path=None, random_seed=None):
     tokens, features, tags = data
 
     tagset = set()
@@ -278,6 +279,24 @@ def evaluate(model, data, num_rounds, random_seed=None):
     features_folds, labels_fold, predictions_fold = \
         k_fold_cross_validation(features, tags, model, k=num_rounds, shuffle=True, random_seed=random_seed)
     print_metrics_seen_unseen_splits(tagset, features_folds, labels_fold, predictions_fold)
+
+    if output_path:
+        logging.info(f"Saving cross-validation predictions to {output_path}")
+        with open(os.path.join(output_path, "predictions.tsv"), "w", encoding="utf-8") as file:
+            for fold_id, fold in enumerate(zip(features_folds, labels_fold, predictions_fold)):
+                file.write(f"{fold_id}\tsentence\tid\ttoken\tlabel\tprediction\n")
+                for sequence_id, sequence in enumerate(zip(*fold)):
+                    for word_id, (word, label, prediction) in enumerate(zip(*sequence)):
+                        file.write(f"{sequence_id}\t{word_id}\t{word['token']}\t{label}\t{prediction}\n")
+                    file.write("\n")
+
+
+def train(data, model, path):
+    _, features, tags = data
+    model.fit(features, tags)
+    os.makedirs(path, exist_ok=True)
+    with open(os.path.join(path, "model.pickle"), "wb") as file:
+        pickle.dump(model, file)
 
 
 MODELS = {
@@ -306,6 +325,10 @@ def main():
                         default="category_merged",
                         help="The column to use as a label for classification, "
                              "corresponding to a heading in the `data_path` file.")
+    parser.add_argument("--output_path",
+                        type=str,
+                        help="The directory path to use to save the model and cross-validation. "
+                             "When specified, the saved model will be trained on all the data not on a specific fold.")
     parser.add_argument("--random_seed",
                         type=int,
                         default=None,
@@ -315,7 +338,12 @@ def main():
     data = read_data(args.data_path, args.label_column)
 
     model = MODELS[args.model]()
-    evaluate(model, data, args.cross_validation_folds, args.random_seed)
+    output_path = args.output_path
+    evaluate(model, data, args.cross_validation_folds, output_path, args.random_seed)
+
+    if output_path:
+        logging.info(f"Training model on entire data & persisting to {output_path}")
+        train(data, model, output_path)
 
 
 if __name__ == "__main__":

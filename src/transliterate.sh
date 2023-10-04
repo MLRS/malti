@@ -19,7 +19,7 @@ fi
 
 for token_mappings in "full" "small" ""; do
   for ranker in "sub_tokens_count_tunis" "word_model_score_tunis" "character_model_score_tunis" "sub_tokens_count_maghreb" "word_model_score_maghreb" "character_model_score_maghreb" "random" ""; do
-    args=()
+    args=("--transliterate")
 
     # token mappings
     if [[ -n ${token_mappings} ]]; then
@@ -66,6 +66,6 @@ for token_mappings in "full" "small" ""; do
     fi
 
     echo "========== $system =========="
-    python transliterate_cli.py "${dataset}" "${DATA_PATH}/${path}" "${OUTPUT_PATH}/${system}/${path}" "${args[@]}"
+    python process.py "${dataset}" "${DATA_PATH}/${path}" "${OUTPUT_PATH}/${system}/${path}" "${args[@]}"
   done
 done

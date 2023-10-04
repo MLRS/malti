@@ -23,10 +23,11 @@ The sub-tokens count model is a reference to tokenizers compatable with [`transf
 
 Intended to transliterate entire datasets in one pass.
 Execute `python transliterate_cli.py -h` to access the documentation.
-The [command line interface](src/transliterate_cli.py) can be used as follows:
+The [command line interface](src/process.py) can be used as follows:
 
 ```shell
-python transliterate_cli.py ${dataset} ${INPUT_PATH} ${OUTPUT_PATH} \
+python process.py ${dataset} ${INPUT_PATH} ${OUTPUT_PATH} \
+  --transliterate \
   --rankers word_model_score character_model_score \
   --ranker_models "../models/aggregated_country/lm/word/tn-maghreb.arpa" "../models/aggregated_country/lm/char/tn-maghreb.arpa" \
   --token_mappings mappings/small_closed_class.map mappings/additional_closed_class.map
