@@ -5,6 +5,12 @@ import numpy as np
 from transformers import AutoTokenizer
 
 
+class Token:
+    def __init__(self, text: str):
+        self.text = text if text == "+" else text.rstrip("+")
+        self.merges_with_next = text.endswith("+") and text != "+"
+
+
 class TokenRanker(abc.ABC):
     best_score_selector = max
     """
@@ -12,7 +18,7 @@ class TokenRanker(abc.ABC):
     This can be overridden by inheritors & is mostly applicable with the default implementation of :py:meth:`~TokenRanker.filter_best`.
     """
 
-    def filter_best(self, alternatives: list[str]) -> list[str]:
+    def filter_best(self, alternatives: list[Token]) -> list[Token]:
         """
         Args:
             alternatives: All the alternative tokens to consider.
@@ -22,7 +28,7 @@ class TokenRanker(abc.ABC):
             If multiple alternatives are given,
             this means that all the alternatives are considered equally good by the :class:`TokenRanker`.
         """
-        scores = self.score(alternatives)
+        scores = self.score([alternative.text for alternative in alternatives])
         return np.asarray(alternatives)[np.asarray(scores) == self.best_score_selector(scores)]
 
     @abc.abstractmethod
@@ -42,8 +48,8 @@ class RandomRanker(TokenRanker):
     Ranks tokens by sorting them alphabetically.
     """
 
-    def filter_best(self, alternatives: list[str]) -> list[str]:
-        return [sorted(alternatives)[0]]
+    def filter_best(self, alternatives: list[Token]) -> list[Token]:
+        return [sorted(alternatives, key=lambda token: token.text)[0]]
 
     def score(self, alternatives: list[str]) -> list[float]:
         pass

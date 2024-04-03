@@ -36,7 +36,8 @@ def dediacritise_non_malti_accents(text: str, diacritics_to_keep: str = "ċġħ�
 
 def transliterate(token: str,
                   token_mappings: list[str] = None,
-                  token_rankers: list[TokenRanker] = None):
+                  token_rankers: list[TokenRanker] = None,
+                  return_token_merge: bool = False):
     """
     Transliterates a Maltese token to a corresponding Arabic token.
 
@@ -47,9 +48,12 @@ def transliterate(token: str,
                           When tie-breaks cannot be resolved after going through all rankers,
                           these are resolved using :class:`RandomRanker`.
                           When this is unspecified, a deterministic mapping is used.
+    :param return_token_merge: Indicates whether to return an additional value indicating a token merge.
     :return: The transliterated token.
              When the transliterated token maps to multiple tokens in the target,
              these are returned as a single string joined with a `" "`.
+             If `return_token_merge` is `True`, another value is also returned, indicating whether the token should be
+             seperated from the next token with a space (`False`) or merged with the next token (`True`).
     """
 
     if token_rankers is None:
@@ -57,7 +61,7 @@ def transliterate(token: str,
     if token_mappings is None:
         token_mappings = []
 
-    def choose(alternatives):
+    def choose(alternatives: list[Token]):
         for ranker in token_rankers:
             alternatives = ranker.filter_best(alternatives)
             if len(alternatives) == 1:
@@ -76,11 +80,13 @@ def transliterate(token: str,
     alternatives = translit_word(lowered, token_mappings, is_non_deterministic)
     alternatives = list(set(alternatives))  # filter out duplicates
     assert len(alternatives) > 0
-    alternatives = [strip_plus(transliterated_token) for transliterated_token in alternatives]
+    alternatives = [Token(transliterated_token) for transliterated_token in alternatives]
 
     transliterated_token = choose(alternatives) if is_non_deterministic else alternatives[0]
 
-    return transliterated_token
+    return (transliterated_token.text, transliterated_token.merges_with_next) \
+        if return_token_merge else \
+        transliterated_token.text
 
 
 def transliterate_sequence(tokens: list[str],
