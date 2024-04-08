@@ -5,7 +5,7 @@ A set of processing pipelines for Maltese mapping tokens to Arabic transliterati
 This repository used to contain code for [Exploring the Impact of Transliteration on NLP Performance: Treating Maltese as an Arabic Dialect](https://aclanthology.org/2023.cawl-1.4/).
 For a snapshot of the code for replication purposes refer to the [`2023.cawl-1.4`](https://github.com/MLRS/malti/tree/2023.cawl-1.4) tag.
 
-The current code contains improvements as detailed in [Cross-Lingual Transfer from Related Languages: Treating Low-Resource Maltese as Multilingual Code-Switching](https://arxiv.org/abs/2401.16895).
+The current code contains improvements as detailed in [Cross-Lingual Transfer from Related Languages: Treating Low-Resource Maltese as Multilingual Code-Switching](https://aclanthology.org/2024.eacl-long.61/).
 A summary of changes from the previous work:
 - Transliteration character mapping updates: added `t`→`ث`, digits, & other miscellaneous symbols.
   Also fixed a bug which wasn't generating `ظ`/`ث`/`أ` characters.
@@ -124,12 +124,21 @@ Refer to the [demo notebook](src/demo.ipynb) for examples.
 The latest version of this work is published under:
 ```bibtex
 @misc{micallef-etal-2024-maltese-etymology,
-      title={Cross-Lingual Transfer from Related Languages: Treating Low-Resource {M}altese as Multilingual Code-Switching}, 
-      author={Kurt Micallef and Nizar Habash and Claudia Borg and Fadhl Eryani and Houda Bouamor},
-      year={2024},
-      eprint={2401.16895},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
+    title = "Cross-Lingual Transfer from Related Languages: Treating Low-Resource {M}altese as Multilingual Code-Switching",
+    author = "Micallef, Kurt  and
+              Habash, Nizar  and
+              Borg, Claudia  and
+              Eryani, Fadhl  and
+              Bouamor, Houda",
+    editor = "Graham, Yvette  and
+              Purver, Matthew",
+    booktitle = "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = mar,
+    year = "2024",
+    address = "St. Julian{'}s, Malta",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.eacl-long.61",
+    pages = "1014--1025",
 }
 ```
 
