@@ -6,5 +6,5 @@ This is the code's API documentation where you can browse to any module and read
 .. toctree::
     :maxdepth: 1
 
-    
+    malti
 
