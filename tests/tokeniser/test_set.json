@@ -1,0 +1,18 @@
+[
+	{
+		"input": "Fit-30 ta' Awwissu 2017, il-Kunsill adotta r-Regolament (UE) 2017/1509.",
+		"target": "Fit- 30 ta' Awwissu 2017 , il- Kunsill adotta r- Regolament ( UE ) 2017/1509 ."
+	},
+	{
+		"input": "Qabel ma wieħed juża kelma minn lingwa oħra, l-aktar fil-kitba, jiżgura ruħu li ma jkunx hemm diġà kelma stabbilita fil-Malti li taqdih tajjeb għall-istess tifsira, eż. ‘biljett/ċitazzjoni’ mhux ‘ticket’, ‘nieda/vara’ mhux ‘illonċja’.",
+		"target": "Qabel ma wieħed juża kelma minn lingwa oħra , l- aktar fil- kitba , jiżgura ruħu li ma jkunx hemm diġà kelma stabbilita fil- Malti li taqdih tajjeb għall- istess tifsira , eż . ‘ biljett / ċitazzjoni ’ mhux ‘ ticket ’, ‘ nieda / vara ’ mhux ‘ illonċja ’ ."
+	},
+	{
+		"input": "Frażi ċelebri oħra tiegħu hija: \"Te possi morì ammazzato... ppe' la fede!\" (Jirra joqtluk... għall-fidi!\")",
+		"target": "Frażi ċelebri oħra tiegħu hija : \" Te possi morì ammazzato . . . ppe' la fede \" ! \" ( Jirra joqtluk . . . għall- fidi ! \" )"
+	},
+	{
+		"input": "Klara ta' Assisi Santa Klara jew Kjara (Assisi, 1193 - Assisi, 11 ta' Awwissu, 1253), kienet soru Taljana li flimkien ma' San Franġisk ta' Assisi waqqfet is-Sorijiet Klarissi li llum ilaħħqu mal-20,000 imxerrdin mad-dinja.",
+		"target": "Klara ta' Assisi Santa Klara jew Kjara ( Assisi , 1193 - Assisi , 11 ta' Awwissu , 1253 ) , kienet soru Taljana li flimkien ma' San Franġisk ta' Assisi waqqfet is- Sorijiet Klarissi li llum ilaħħqu mal- 20,000 imxerrdin mad- dinja ."
+	}
+]
