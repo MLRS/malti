@@ -1,0 +1,32 @@
+[
+    {
+        "description": "Numbers with a slash inside.",
+        "input": "Fit-30 ta' Awwissu 2017, il-Kunsill adotta r-Regolament (UE) 2017/1509.",
+        "target": "Fit- 30 ta' Awwissu 2017 , il- Kunsill adotta r- Regolament ( UE ) 2017/1509 ."
+    },
+    {
+        "description": "Numbers with a comma inside and words with an apostrophe.",
+        "input": "Klara ta' Assisi Santa Klara jew Kjara (Assisi, 1193 - Assisi, 11 ta' Awwissu, 1253), kienet soru Taljana li flimkien ma' San Franġisk ta' Assisi waqqfet is-Sorijiet Klarissi li llum ilaħħqu mal-20,000 imxerrdin mad-dinja.",
+        "target": "Klara ta' Assisi Santa Klara jew Kjara ( Assisi , 1193 - Assisi , 11 ta' Awwissu , 1253 ) , kienet soru Taljana li flimkien ma' San Franġisk ta' Assisi waqqfet is- Sorijiet Klarissi li llum ilaħħqu mal- 20,000 imxerrdin mad- dinja ."
+    },
+    {
+        "description": "Curly quotes.",
+        "input": "Qabel ma wieħed juża kelma minn lingwa oħra, l-aktar fil-kitba, jiżgura ruħu li ma jkunx hemm diġà kelma stabbilita fil-Malti li taqdih tajjeb għall-istess tifsira, eż. ‘biljett/ċitazzjoni’ mhux ‘ticket’, ‘nieda/vara’ mhux ‘illonċja’.",
+        "target": "Qabel ma wieħed juża kelma minn lingwa oħra , l- aktar fil- kitba , jiżgura ruħu li ma jkunx hemm diġà kelma stabbilita fil- Malti li taqdih tajjeb għall- istess tifsira , eż . ‘ biljett / ċitazzjoni ’ mhux ‘ ticket ’ , ‘ nieda / vara ’ mhux ‘ illonċja ’ ."
+    },
+    {
+        "description": "Elipsis, quotes, foreign words.",
+        "input": "Frażi ċelebri oħra tiegħu hija: \"Te possi morì ammazzato... ppe' la fede!\" (Jirra joqtluk... għall-fidi!\")",
+        "target": "Frażi ċelebri oħra tiegħu hija : \" Te possi morì ammazzato . . . ppe' la fede ! \" ( Jirra joqtluk . . . għall- fidi ! \" )"
+    },
+    {
+        "description": "Articles with a dash in front.",
+        "input": "Huwa jistieden lil dawk il-ħdax -il membru li għadhom ma ffirmawx id-Dikjarazzjoni ta' nuqqas ta' inkompatibilitá biex jagħmlu dan immedjatament.",
+        "target": "Huwa jistieden lil dawk il- ħdax -il membru li għadhom ma ffirmawx id- Dikjarazzjoni ta' nuqqas ta' inkompatibilitá biex jagħmlu dan immedjatament ."
+    },
+    {
+        "description": "URLs and dates.",
+        "input": "Sit web għas-Summit UE-CELAC http://www.consilium.europa.eu/mt/meetings/internationalsummit/2015/06/10-11/",
+        "target": "Sit web għas- Summit UE - CELAC http : / / www . consilium . europa . eu / mt / meetings / internationalsummit / 2015/06/10 - 11 /"
+    }
+]

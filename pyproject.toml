@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools==68.2.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "malti"
+authors = [
+    {name = "Kurt Micallef", email = "kurt.micallef@um.edu.mt"},
+    {name = "Marc Tanti", email = "marc.tanti@um.edu.mt"},
+]
+description = "A library for processing text in the Maltese language."
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = [
+    "Malti",
+    "Maltese",
+]
+license = {text = "MIT License"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Typing :: Typed",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Text Processing :: Linguistic",
+]
+dynamic = ["version", "dependencies"]
+
+[tool.setuptools.dynamic]
+version = {attr = "malti.__version__"}
+dependencies = {file = "requirements.txt"}
+
+[project.urls]
+Repository = "https://github.com/MLRS/malti/"
+Documentation = "https://malti.readthedocs.io/"
