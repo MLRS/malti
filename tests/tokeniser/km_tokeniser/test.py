@@ -33,10 +33,10 @@ class KMTokeniserTest(unittest.TestCase):
 
         tokeniser = KMTokeniser()
         for test_item in test_set:
-            output = tokeniser.tokenise(test_item['input'])
+            output = tokeniser.tokenise(test_item['text'])
             self.assertEqual(
                 output,
-                test_item['target'].split(' '),
+                test_item['tokenised'].split(' '),
                 msg=output,
             )
 
@@ -58,12 +58,37 @@ class KMTokeniserTest(unittest.TestCase):
 
         tokeniser = KMTokeniser()
         for test_item in test_set:
-            indices = tokeniser.tokenise_indices(test_item['input'])
-            output = [test_item['input'][i:j] for (i, j) in indices]
+            indices = tokeniser.tokenise_indices(test_item['text'])
+            output = [test_item['text'][i:j] for (i, j) in indices]
             self.assertEqual(
                 output,
-                test_item['target'].split(' '),
+                test_item['tokenised'].split(' '),
                 msg=indices,
+            )
+
+    #######################################################
+    def test_detokenise(
+        self,
+    ) -> None:
+        '''
+        Test the KM tokeniser's ``detokenise`` method.
+        '''
+        with open(
+            os.path.join(
+                malti.path, '..', '..', 'tests', 'tokeniser', 'km_tokeniser',
+                'test_set.json',
+            ),
+            'r', encoding='utf-8'
+        ) as f:
+            test_set = json.load(f)
+
+        tokeniser = KMTokeniser()
+        for test_item in test_set:
+            output = tokeniser.detokenise(test_item['tokenised'].split(' '))
+            self.assertEqual(
+                output,
+                test_item['detokenised'],
+                msg=output,
             )
 
 
