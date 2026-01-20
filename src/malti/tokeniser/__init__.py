@@ -7,7 +7,6 @@ from malti.tokeniser.regex_tokeniser import RegexTokeniser
 from malti.tokeniser.km_tokeniser.km_tokeniser import KMTokeniser
 
 
-#######################################################
 def tokenise(
     text: str,
 ) -> list[str]:

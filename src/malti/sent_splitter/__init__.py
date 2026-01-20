@@ -6,7 +6,6 @@ from malti.sent_splitter.sent_splitter import SentSplitter
 from malti.sent_splitter.km_sent_splitter.km_sent_splitter import KMSentSplitter
 
 
-#######################################################
 def split(
     text: str,
 ) -> list[str]:

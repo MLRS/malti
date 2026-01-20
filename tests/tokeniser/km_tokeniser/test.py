@@ -9,13 +9,11 @@ import malti
 from malti.tokeniser import KMTokeniser
 
 
-#######################################################
 class KMTokeniserTest(unittest.TestCase):
     '''
     Test the ``KMTokeniser``.
     '''
 
-    #######################################################
     def test_tokenise(
         self,
     ) -> None:
@@ -40,7 +38,6 @@ class KMTokeniserTest(unittest.TestCase):
                 msg=output,
             )
 
-    #######################################################
     def test_tokenise_indices(
         self,
     ) -> None:
@@ -66,7 +63,6 @@ class KMTokeniserTest(unittest.TestCase):
                 msg=indices,
             )
 
-    #######################################################
     def test_detokenise(
         self,
     ) -> None:
@@ -92,7 +88,5 @@ class KMTokeniserTest(unittest.TestCase):
             )
 
 
-
-#######################################################
 if __name__ == '__main__':
     unittest.main()

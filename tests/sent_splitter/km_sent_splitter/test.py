@@ -9,13 +9,11 @@ import malti
 from malti.sent_splitter import KMSentSplitter
 
 
-#######################################################
 class KMSentenceSplitterTest(unittest.TestCase):
     '''
     Test the ``KMSentenceSplitter``.
     '''
 
-    #######################################################
     def test_split(
         self,
     ) -> None:
@@ -41,6 +39,5 @@ class KMSentenceSplitterTest(unittest.TestCase):
             )
 
 
-#######################################################
 if __name__ == '__main__':
     unittest.main()

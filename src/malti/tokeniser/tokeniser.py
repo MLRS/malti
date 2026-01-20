@@ -10,13 +10,11 @@ __all__ = [
 ]
 
 
-#######################################################
 class Tokeniser(ABC):
     '''
     Top-level abstract class representing all tokenisers.
     '''
 
-    #######################################################
     def __init__(
         self,
     ) -> None:
@@ -24,7 +22,6 @@ class Tokeniser(ABC):
         Empty constructor.
         '''
 
-    #######################################################
     def tokenise(
         self,
         text: str,
@@ -37,7 +34,6 @@ class Tokeniser(ABC):
         '''
         raise NotImplementedError()
 
-    #######################################################
     def tokenise_indices(
         self,
         text: str,
@@ -53,7 +49,6 @@ class Tokeniser(ABC):
         '''
         raise NotImplementedError()
 
-    #######################################################
     def detokenise(
         self,
         tokens: list[str],

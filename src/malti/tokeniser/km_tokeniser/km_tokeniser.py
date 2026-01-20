@@ -11,7 +11,6 @@ __all__ = [
 ]
 
 
-#######################################################
 class KMTokeniser(RegexTokeniser):
     '''
     The tokeniser used by the MLRS Korpus Malti corpus.
@@ -45,7 +44,6 @@ class KMTokeniser(RegexTokeniser):
     ABBREV_PREFIX = r'sant[\'’]|(a\.?m|p\.?m|onor|sra|nru|dott|kap|mons|dr|prof)\.?'
     '''Captures abbreviations e.g. Sant' (as in Sant'Anna)'''
 
-    #######################################################
     def __init__(
         self,
     ) -> None:
@@ -78,7 +76,6 @@ class KMTokeniser(RegexTokeniser):
             re.IGNORECASE
         )
 
-    #######################################################
     def detokenise(
         self,
         tokens: list[str],

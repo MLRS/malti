@@ -13,13 +13,11 @@ __all__ = [
 ]
 
 
-#######################################################
 class KMSentSplitter(SentSplitter):
     '''
     The sentence splitter used by the MLRS Korpus Malti corpus.
     '''
 
-    #######################################################
     def __init__(
         self,
     ) -> None:
@@ -35,7 +33,6 @@ class KMSentSplitter(SentSplitter):
             ),
         )
 
-    #######################################################
     def split(
         self,
         text: str,

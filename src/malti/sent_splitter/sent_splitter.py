@@ -10,13 +10,11 @@ __all__ = [
 ]
 
 
-#######################################################
 class SentSplitter(ABC):
     '''
     Top-level abstract class representing all sentence splitters.
     '''
 
-    #######################################################
     def __init__(
         self,
     ) -> None:
@@ -24,7 +22,6 @@ class SentSplitter(ABC):
         Empty constructor.
         '''
 
-    #######################################################
     def split(
         self,
         text: str,
