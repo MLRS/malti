@@ -14,7 +14,9 @@ __all__ = [
 class KMTokeniser(RegexTokeniser):
     '''
     The tokeniser used by the MLRS Korpus Malti corpus.
-    Taken from https://github.com/UMSpeech/MASRI/blob/main/masri/tokenise/tokenise.py
+    Adapted from https://github.com/UMSpeech/MASRI/blob/main/masri/tokenise/tokenise.py
+    Even though the linked repository does not have an MIT license, we have permission from the
+    owner, albertgatt, to include it in this MIT licensed project.
     '''
 
     NUMERIC_DATE = r'\d{1,2}[-/]\d{1,2}[-/]\d{2,4}|\d{2,4}[-/]\d{1,2}[-/]\d{1,2}'
