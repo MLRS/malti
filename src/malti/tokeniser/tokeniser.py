@@ -15,13 +15,6 @@ class Tokeniser(ABC):
     Top-level abstract class representing all tokenisers.
     '''
 
-    def __init__(
-        self,
-    ) -> None:
-        '''
-        Empty constructor.
-        '''
-
     def tokenise(
         self,
         text: str,
