@@ -5,7 +5,6 @@ Test the ``KMTokeniser``.
 import os
 import json
 import unittest
-import malti
 from malti.tokeniser import KMTokeniser
 
 
@@ -21,10 +20,7 @@ class KMTokeniserTest(unittest.TestCase):
         Test the KM tokeniser's ``tokenise`` method.
         '''
         with open(
-            os.path.join(
-                malti.path, '..', '..', 'tests', 'tokeniser', 'km_tokeniser',
-                'test_set.json',
-            ),
+            os.path.join(os.path.dirname(__file__), 'test_set.json'),
             'r', encoding='utf-8'
         ) as f:
             test_set = json.load(f)
@@ -45,10 +41,7 @@ class KMTokeniserTest(unittest.TestCase):
         Test the KM tokeniser's ``tokenise_indices`` method.
         '''
         with open(
-            os.path.join(
-                malti.path, '..', '..', 'tests', 'tokeniser', 'km_tokeniser',
-                'test_set.json',
-            ),
+            os.path.join(os.path.dirname(__file__), 'test_set.json'),
             'r', encoding='utf-8'
         ) as f:
             test_set = json.load(f)
@@ -70,10 +63,7 @@ class KMTokeniserTest(unittest.TestCase):
         Test the KM tokeniser's ``detokenise`` method.
         '''
         with open(
-            os.path.join(
-                malti.path, '..', '..', 'tests', 'tokeniser', 'km_tokeniser',
-                'test_set.json',
-            ),
+            os.path.join(os.path.dirname(__file__), 'test_set.json'),
             'r', encoding='utf-8'
         ) as f:
             test_set = json.load(f)

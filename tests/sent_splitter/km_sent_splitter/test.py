@@ -5,7 +5,6 @@ Test the ``KMSentenceSplitter``.
 import os
 import json
 import unittest
-import malti
 from malti.sent_splitter import KMSentSplitter
 
 
@@ -21,10 +20,7 @@ class KMSentenceSplitterTest(unittest.TestCase):
         Test the KM sentence splitter's ``split`` method.
         '''
         with open(
-            os.path.join(
-                malti.path, '..', '..', 'tests', 'sent_splitter', 'km_sent_splitter',
-                'test_set.json',
-            ),
+            os.path.join(os.path.dirname(__file__), 'test_set.json'),
             'r', encoding='utf-8'
         ) as f:
             test_set = json.load(f)

@@ -4,7 +4,6 @@ Korpus Malti sentence splitter.
 
 import os
 import sentence_splitter
-import malti
 from malti.sent_splitter.sent_splitter import SentSplitter
 
 
@@ -28,7 +27,7 @@ class KMSentSplitter(SentSplitter):
         self._spltter = sentence_splitter.SentenceSplitter(
             language='it',
             non_breaking_prefix_file=os.path.join(
-                malti.path, 'sent_splitter', 'km_sent_splitter',
+                os.path.dirname(__file__),
                 'mt_non_breaking_prefixes.txt',
             ),
         )
