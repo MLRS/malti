@@ -10,21 +10,11 @@ __all__ = [
 ]
 
 
-#######################################################
 class Tokeniser(ABC):
     '''
     Top-level abstract class representing all tokenisers.
     '''
 
-    #######################################################
-    def __init__(
-        self,
-    ) -> None:
-        '''
-        Empty constructor.
-        '''
-
-    #######################################################
     def tokenise(
         self,
         text: str,
@@ -37,7 +27,6 @@ class Tokeniser(ABC):
         '''
         raise NotImplementedError()
 
-    #######################################################
     def tokenise_indices(
         self,
         text: str,
@@ -52,3 +41,16 @@ class Tokeniser(ABC):
             locations of the tokens in the text.
         '''
         raise NotImplementedError()
+
+    def detokenise(
+        self,
+        tokens: list[str],
+    ) -> str:
+        '''
+        Detokenise the list of tokens back into a whole text.
+        The default behaviour is to just join all the tokens with spaces in between.
+
+        :param tokens: The tokenised text.
+        :return: The text.
+        '''
+        return ' '.join(tokens)

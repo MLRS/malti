@@ -15,7 +15,6 @@ from typing import Any
 import malti
 
 
-#########################################
 def generate(
     code_path: str,
     doc_path: str,
@@ -105,7 +104,6 @@ def generate(
     return (dir_names, code_names)
 
 
-#########################################
 def main(
 ) -> None:
     '''
@@ -185,6 +183,5 @@ This is the code's API documentation where you can browse to any module and read
     )
 
 
-#########################################
 if __name__ == '__main__':
     main()

@@ -15,7 +15,6 @@ from typing import Any
 import malti
 
 
-#########################################
 def check_init(
     code_path: str,
 ) -> None:
@@ -37,7 +36,6 @@ def check_init(
             check_init(new_path)
 
 
-#########################################
 def check_docstrings_tree(
     tree: Any,
     path: str,
@@ -107,7 +105,6 @@ def check_docstrings_tree(
                 )
 
 
-#########################################
 def check_docstrings_file(
     path: str,
 ) -> None:
@@ -130,7 +127,6 @@ def check_docstrings_file(
     check_docstrings_tree(tree, path)
 
 
-#########################################
 def check_docstrings_dir(
     code_path: str,
 ) -> None:
@@ -155,7 +151,6 @@ def check_docstrings_dir(
             check_docstrings_dir(new_path)
 
 
-#########################################
 def main(
 ) -> None:
     '''
@@ -175,6 +170,5 @@ def main(
     check_docstrings_dir(malti.path)
 
 
-#########################################
 if __name__ == '__main__':
     main()

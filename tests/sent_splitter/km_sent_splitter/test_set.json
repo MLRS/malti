@@ -1,0 +1,20 @@
+[
+    {
+        "description": "Ellipes and quoted sentences.",
+        "text": "Ir-Rumani kkunsidraw il-Muntanja Vesuvju bħala devota għal Erkule. L-istoriku Diodorus Siculus għandu x'jaqsam ma 'tradizzjoni li Erkule, fit-twettiq tal-hidma tiegħu, għadda mill-pajjiż ta' Cumae fil-viċin fi triqtu lejn Sqallija u sab hemm post imsejjaħ \"il-Pjanura Phlegraeana\" (Φλεγραῖον πεδίον, \"pjanura tan-nar\") , \"minn għoljiet li fil-passat irremettu n-nar ... issa jissejjaħ Vesuvju.\" [9] Kien abitat minn banditi, \"ulied id-Dinja,\" li kienu ġganti. Bl-għajnuna tal-allat hu pacifija-reġjun u kompla. Il-fatti wara t-tradizzjoni, jekk hemm, għadhom mhux magħrufa, bħalma jagħmel ukoll jekk Herculaneum ġie msemmi wara. Epigramma mill-poeta Martial fl-88 WK tissuġġerixxi li kemm Venere, il-patruna ta 'Pompej, kif ukoll Hercules kienu jaduraw fir-reġjun meqrud mill-iżbroff tal-79. ",
+        "split": [
+            "Ir-Rumani kkunsidraw il-Muntanja Vesuvju bħala devota għal Erkule.",
+            "L-istoriku Diodorus Siculus għandu x'jaqsam ma 'tradizzjoni li Erkule, fit-twettiq tal-hidma tiegħu, għadda mill-pajjiż ta' Cumae fil-viċin fi triqtu lejn Sqallija u sab hemm post imsejjaħ \"il-Pjanura Phlegraeana\" (Φλεγραῖον πεδίον, \"pjanura tan-nar\") , \"minn għoljiet li fil-passat irremettu n-nar ... issa jissejjaħ Vesuvju.\" [9] Kien abitat minn banditi, \"ulied id-Dinja,\" li kienu ġganti.",
+            "Bl-għajnuna tal-allat hu pacifija-reġjun u kompla.",
+            "Il-fatti wara t-tradizzjoni, jekk hemm, għadhom mhux magħrufa, bħalma jagħmel ukoll jekk Herculaneum ġie msemmi wara.",
+            "Epigramma mill-poeta Martial fl-88 WK tissuġġerixxi li kemm Venere, il-patruna ta 'Pompej, kif ukoll Hercules kienu jaduraw fir-reġjun meqrud mill-iżbroff tal-79."
+        ]
+    },
+    {
+        "description": "Name abbreviations.",
+        "text": "Riċetta ta' Anton B. Dougall Il-Ġenbejn tal-Majjal bl-Għasel u Inkaljat Ara r-riċetta fil-verżjoni Ingliża.",
+        "split": [
+            "Riċetta ta' Anton B. Dougall Il-Ġenbejn tal-Majjal bl-Għasel u Inkaljat Ara r-riċetta fil-verżjoni Ingliża."
+        ]
+    }
+]

@@ -63,6 +63,22 @@ Apart from ``tokenise``, every tokeniser can also return a list of indices of th
 
 This tells you that the first word is found at ``sentence[0:7]``, the second word at ``sentence[8:11]``, and so on.
 
+There is also a ``detokenise`` method that is meant to *approximately* invert the ``tokenise`` method by returning the original text given a list of tokens (although tokenisation is generally a lossy transformation which means that there is no guarantee that the original text can be recovered):
+
+.. code-block:: python
+    :linenos:
+
+    import malti.tokeniser
+
+    tokeniser = malti.tokeniser.KMTokeniser()
+
+    tokens = ['Eżempju', "ta'", 'sentenza', '.']
+    text = tokeniser.detokenise(tokens)
+    print(text)
+
+.. code-block:: python
+
+    'Eżempju ta\' sentenza.'
 
 Available tokenisers
 --------------------

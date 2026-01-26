@@ -11,13 +11,11 @@ __all__ = [
 ]
 
 
-#######################################################
 class RegexTokeniser(Tokeniser):
     '''
     Tokenise a text by using regular expressions that match tokens.
     '''
 
-    #######################################################
     def __init__(
         self,
         pattern: str,
@@ -34,7 +32,6 @@ class RegexTokeniser(Tokeniser):
         '''
         self._regex = re.compile(pattern, flags)
 
-    #######################################################
     def tokenise(
         self,
         text: str,
@@ -47,7 +44,6 @@ class RegexTokeniser(Tokeniser):
         '''
         return self._regex.findall(text)
 
-    #######################################################
     def tokenise_indices(
         self,
         text: str,
