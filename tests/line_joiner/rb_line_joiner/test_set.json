@@ -1,0 +1,23 @@
+[
+    {
+        "description": "Distinguish between dashes that need a space after them and dashes that don't.",
+        "lines": [
+            "Il-",
+            "kelb nebaħ",
+            "lill-qattus -",
+            "dak is-sufi."
+        ],
+        "joined_fixed_hyphen": "Il-kelb nebaħ lill-qattus - dak is-sufi.",
+        "joined_unfixed_hyphen": "Il-kelb nebaħ lill-qattus - dak is-sufi."
+    },
+    {
+        "description": "Distinguish between hyphenated words and dashed but non-hyphenated words.",
+        "lines": [
+            "Din hija kwistjoni impor-",
+            "tanti ħafna u hija għat-",
+            "tifel tiegħek."
+        ],
+        "joined_fixed_hyphen": "Din hija kwistjoni importanti ħafna u hija għat-tifel tiegħek.",
+        "joined_unfixed_hyphen": "Din hija kwistjoni impor-tanti ħafna u hija għat-tifel tiegħek."
+    }
+]
