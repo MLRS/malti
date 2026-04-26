@@ -50,4 +50,4 @@ Available sentence splitters
 
 The following sentence splitters are available:
 
-* ``malti.tokeniser.KMSentSplitter`` (:doc:`../malti/sent_splitter/km_sent_splitter/km_sent_splitter`): A ``SentSplitter`` that is equivalent to the one used to split sentences in the `Korpus Malti <https://mlrs.research.um.edu.mt/CQPweb/>`_.
+* ``malti.sent_splitter.KMSentSplitter`` (:doc:`../malti/sent_splitter/km_sent_splitter/km_sent_splitter`): A ``SentSplitter`` that is equivalent to the one used to split sentences in the `Korpus Malti <https://mlrs.research.um.edu.mt/CQPweb/>`_.
