@@ -34,6 +34,13 @@ dynamic = ["version", "dependencies"]
 version = {attr = "malti.__version__"}
 dependencies = {file = "requirements.txt"}
 
+[tool.setuptools.package-data]
+"*" = [
+    "*.txt",
+    "*.json",
+    "*.csv",
+]
+
 [project.urls]
 Repository = "https://github.com/MLRS/malti/"
 Documentation = "https://malti.readthedocs.io/"
