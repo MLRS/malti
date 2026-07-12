@@ -8,5 +8,6 @@ Top-level package.
 
     malti/data
     malti/line_joiner
+    malti/normalisation
     malti/sent_splitter
     malti/tokeniser

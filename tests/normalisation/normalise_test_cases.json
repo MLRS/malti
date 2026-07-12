@@ -1,0 +1,555 @@
+[
+  {
+    "input": "“Malta” hija gz\u0307ira z\u0307għira fic\u0307-\u200bc\u0307entru tal-\u200bBaħar il-\u200bMediterran.",
+    "output": "\"Malta\" hija gżira żgħira fiċ-ċentru tal-Baħar il-Mediterran."
+  },
+  {
+    "input": "“Malta” hija gz\u0307ira #æira f`nofs il-Ba\u045bar il-Mediterran.",
+    "output": "\"Malta\" hija gżira żgħira f'nofs il-Baħar il-Mediterran.",
+    "output_no_heuristics": "\"Malta\" hija gżira #æira f'nofs il-Baћar il-Mediterran."
+  },
+  {
+    "input": "c\u0307erti",
+    "output": "ċerti",
+    "comment": "Separate 'combining dot above' character should be normalised to a single character"
+  },
+  {
+    "input": "C\u0307ERTI",
+    "output": "ĊERTI",
+    "comment": "Separate 'combining dot above' character should be normalised to a single character"
+  },
+  {
+    "input": "g\u0307ejjieni",
+    "output": "ġejjieni",
+    "comment": "Separate 'combining dot above' character should be normalised to a single character"
+  },
+  {
+    "input": "G\u0307EJJIENI",
+    "output": "ĠEJJIENI",
+    "comment": "Separate 'combining dot above' character should be normalised to a single character"
+  },
+  {
+    "input": "pajjiz\u0307i",
+    "output": "pajjiżi",
+    "comment": "Separate 'combining dot above' character should be normalised to a single character"
+  },
+  {
+    "input": "PAJJIZ\u0307I",
+    "output": "PAJJIŻI",
+    "comment": "Separate 'combining dot above' character should be normalised to a single character"
+  },
+  {
+    "input": "jirrap\u00adporta",
+    "output": "jirrapporta"
+  },
+  {
+    "input": "il-\u00adpost",
+    "output": "il-post"
+  },
+  {
+    "input": "il\u00ad\u2010post",
+    "output": "il-post"
+  },
+  {
+    "input": "il\u2010post",
+    "output": "il-post"
+  },
+  {
+    "input": "il-\u200bpost",
+    "output": "il-post"
+  },
+  {
+    "input": "\u0006erti",
+    "output": "ċerti",
+    "output_no_heuristics": "erti"
+  },
+  {
+    "input": "\u0007ejjieni",
+    "output": "ġejjieni",
+    "output_no_heuristics": "ejjieni"
+  },
+  {
+    "input": "ba\u0008ar",
+    "output": "baħar",
+    "output_no_heuristics": "baar"
+  },
+  {
+    "input": "pajji\u0005i",
+    "output": "pajjiżi",
+    "output_no_heuristics" : "pajjii"
+  },
+  {
+    "input": "b’tali",
+    "output": "b'tali"
+  },
+  {
+    "input": "f’dan",
+    "output": "f'dan"
+  },
+  {
+    "input": "x`inżid",
+    "output": "x'inżid"
+  },
+  {
+    "input": "jistaʼ",
+    "output": "jista'"
+  },
+  {
+    "input": "taʼ",
+    "output": "ta'"
+  },
+  {
+    "input": "ta’",
+    "output": "ta'"
+  },
+  {
+    "input": "ta`",
+    "output": "ta'"
+  },
+  {
+    "input": "diġa`",
+    "output": "diġà",
+    "output_no_heuristics" : "diġa'"
+  },
+  {
+    "input": "DIĠA`",
+    "output": "DIĠÀ",
+    "output_no_heuristics" : "DIĠA'"
+  },
+  {
+    "input": "kafe`",
+    "output": "kafè",
+    "output_no_heuristics" : "kafe'"
+  },
+  {
+    "input": "KAFE`",
+    "output": "KAFÈ",
+    "output_no_heuristics" : "KAFE'"
+  },
+  {
+    "input": "pero`",
+    "output": "pero'",
+    "output_no_heuristics" : "pero'"
+  },
+  {
+    "input": "PERO`",
+    "output": "PERO'",
+    "output_no_heuristics" : "PERO'"
+  },
+  {
+    "input": "Ġesu`",
+    "output": "Ġesù",
+    "output_no_heuristics" : "Ġesu'"
+  },
+  {
+    "input": "ĠESU`",
+    "output": "ĠESÙ",
+    "output_no_heuristics" : "ĠESU'"
+  },
+  {
+    "input": "komunitа",
+    "output": "komunità",
+    "output_no_heuristics" : "komunitа",
+    "comment": "Cyrillic character а"
+  },
+  {
+    "input": "Златни",
+    "output": "Златни",
+    "comment": "Cyrillic character а should not change, not misused"
+  },
+  {
+    "input": "KOMUNITА",
+    "output": "KOMUNITÀ",
+    "output_no_heuristics" : "KOMUNITА",
+    "comment": "Cyrillic character А"
+  },
+  {
+    "input": "ЗЛАТНИ",
+    "output": "ЗЛАТНИ",
+    "comment": "Cyrillic character А should not change, not misused"
+  },
+  {
+    "input": "gћal",
+    "output": "għal",
+    "output_no_heuristics" : "gћal",
+    "comment": "Cyrillic character tshe"
+  },
+  {
+    "input": "овлашћени",
+    "output": "овлашћени",
+    "comment": "Cyrillic character tshe should not change, character not misused"
+  },
+  {
+    "input": "soðjali",
+    "output": "soċjali",
+    "output_no_heuristics" : "soðjali"
+  },
+  {
+    "input": "Auður",
+    "output": "Auður",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "SOÐJALI",
+    "output": "SOĊJALI",
+    "output_no_heuristics" : "SOÐJALI"
+  },
+  {
+    "input": "AUÐUR",
+    "output": "AUÐUR",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "ëimiterju",
+    "output": "ċimiterju",
+    "output_no_heuristics" : "ëimiterju"
+  },
+  {
+    "input": "Citroën",
+    "output": "Citroën",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "reíjonali",
+    "output": "reġjonali",
+    "output_no_heuristics" : "reíjonali"
+  },
+  {
+    "input": "Martínez",
+    "output": "Martínez",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "REÍJONALI",
+    "output": "REĠJONALI",
+    "output_no_heuristics" : "REÍJONALI"
+  },
+  {
+    "input": "MARTÍNEZ",
+    "output": "MARTÍNEZ",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "reājonali",
+    "output": "reġjonali",
+    "output_no_heuristics" : "reājonali"
+  },
+  {
+    "input": "Krāslavas",
+    "output": "Krāslavas",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "REĀJONALI",
+    "output": "REĠJONALI",
+    "output_no_heuristics" : "REĀJONALI"
+  },
+  {
+    "input": "KRĀSLAVAS",
+    "output": "KRĀSLAVAS",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "taót",
+    "output": "taħt",
+    "output_no_heuristics" : "taót"
+  },
+  {
+    "input": "federación",
+    "output": "federación",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "TAÓT",
+    "output": "TAĦT",
+    "output_no_heuristics" : "TAÓT"
+  },
+  {
+    "input": "FEDERACIÓN",
+    "output": "FEDERACIÓN",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "xoæol",
+    "output": "xogħol",
+    "output_no_heuristics" : "xoæol"
+  },
+  {
+    "input": "lacunæ",
+    "output": "lacunæ",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "XOÆOL",
+    "output": "XOGĦOL",
+    "output_no_heuristics" : "XOÆOL"
+  },
+  {
+    "input": "LACUNÆ",
+    "output": "LACUNÆ",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "úball",
+    "output": "żball",
+    "output_no_heuristics" : "úball"
+  },
+  {
+    "input": "número",
+    "output": "número",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "ÚBALL",
+    "output": "ŻBALL",
+    "output_no_heuristics" : "ÚBALL"
+  },
+  {
+    "input": "NÚMERO",
+    "output": "NÚMERO",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "iŜda",
+    "output": "iżda",
+    "output_no_heuristics" : "iŜda"
+  },
+  {
+    "input": "MARUŜIČ",
+    "output": "MARUŜIČ",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "góaúla",
+    "output": "għażla",
+    "output_no_heuristics" : "góaúla",
+    "comment": "multiple character substitutions"
+  },
+  {
+    "input": "Ä\u008aerimonja",
+    "output": "ċerimonja",
+    "output_no_heuristics" : "Äerimonja"
+  },
+  {
+    "input": "miegÄ§ek",
+    "output": "miegħek",
+    "output_no_heuristics" : "miegÄ§ek"
+  },
+  {
+    "input": "FranÄ¡isku",
+    "output": "Franġisku",
+    "output_no_heuristics" : "FranÄ¡isku"
+  },
+  {
+    "input": "Ä¦al Far",
+    "output": "Ħal Far",
+    "output_no_heuristics" : "Ä¦al Far"
+  },
+  {
+    "input": "jÅ1⁄4ur",
+    "output": "jżur",
+    "output_no_heuristics" : "jÅ1⁄4ur"
+  },
+  {
+    "input": "Ġes羅",
+    "output": "Ġesù",
+    "output_no_heuristics" : "Ġes羅"
+  },
+  {
+    "input": "i¿da",
+    "output": "iżda",
+    "output_no_heuristics" : "i¿da"
+  },
+  {
+    "input": "¿Dónde",
+    "output": "¿Dónde",
+    "comment": "should not change, character not misused"
+  },
+  {
+    "input": "taâ\u0080\u0099",
+    "output": "ta'",
+    "output_no_heuristics" : "taâ"
+  },
+  {
+    "input": "ta\ufffd",
+    "output": "ta'",
+    "output_no_heuristics" : "ta\ufffd"
+  },
+  {
+    "input": "f\ufffddan",
+    "output": "f'dan",
+    "output_no_heuristics" : "f\ufffddan"
+  },
+  {
+    "input": "liberta\uf00f",
+    "output": "libertà",
+    "output_no_heuristics" : "liberta"
+  },
+  {
+    "input": "LIBERTA\uf00f",
+    "output": "LIBERTÀ",
+    "output_no_heuristics" : "LIBERTA"
+  },
+  {
+    "input": "libert\ufffd",
+    "output": "libertà",
+    "output_no_heuristics" : "libert\ufffd"
+  },
+  {
+    "input": "LIBERT\ufffd",
+    "output": "LIBERTÀ",
+    "output_no_heuristics" : "LIBERT\ufffd"
+  },
+  {
+    "input": "\ufffdumru",
+    "output": "\ufffdumru",
+    "comment": "unmapped case, but shouldn't change to ' character"
+  },
+  {
+    "input": "jista\u0092",
+    "output": "jista'",
+    "output_no_heuristics" : "jista"
+  },
+  {
+    "input": "`ens",
+    "output": "ċens",
+    "output_no_heuristics" : "'ens"
+  },
+  {
+    "input": "¬ENS",
+    "output": "ĊENS",
+    "output_no_heuristics" : "¬ENS"
+  },
+  {
+    "input": "spi``a",
+    "output": "spiċċa",
+    "output_no_heuristics" : "spi''a"
+  },
+  {
+    "input": "SPI¬¬A",
+    "output": "SPIĊĊA",
+    "output_no_heuristics" : "SPI¬¬A"
+  },
+  {
+    "input": "ji[i",
+    "output": "jiġi",
+    "output_no_heuristics" : "ji[i"
+  },
+  {
+    "input": "JI{I",
+    "output": "JIĠI",
+    "output_no_heuristics" : "JI{I"
+  },
+  {
+    "input": "ga[[a",
+    "output": "gaġġa",
+    "output_no_heuristics" : "ga[[a"
+  },
+  {
+    "input": "GA{{A",
+    "output": "GAĠĠA",
+    "output_no_heuristics" : "GA{{A"
+  },
+  {
+    "input": "ta]t",
+    "output": "taħt",
+    "output_no_heuristics" : "ta]t"
+  },
+  {
+    "input": "TA}T",
+    "output": "TAĦT",
+    "output_no_heuristics" : "TA}T"
+  },
+  {
+    "input": "a]]ari",
+    "output": "aħħari",
+    "output_no_heuristics" : "a]]ari"
+  },
+  {
+    "input": "A}}ARI",
+    "output": "AĦĦARI",
+    "output_no_heuristics" : "A}}ARI"
+  },
+  {
+    "input": "#amm",
+    "output": "żamm",
+    "output_no_heuristics" : "#amm"
+  },
+  {
+    "input": "~AMM",
+    "output": "ŻAMM",
+    "output_no_heuristics" : "~AMM"
+  },
+  {
+    "input": "UFFI~JALI",
+    "output": "UFFIĊJALI",
+    "output_no_heuristics" : "UFFI~JALI"
+  },
+  {
+    "input": "\\amm",
+    "output": "żamm",
+    "output_no_heuristics" : "\\amm"
+  },
+  {
+    "input": "|AMM",
+    "output": "ŻAMM",
+    "output_no_heuristics" : "|AMM"
+  },
+  {
+    "input": "##omm",
+    "output": "żżomm",
+    "output_no_heuristics" : "##omm"
+  },
+  {
+    "input": "~~OMM",
+    "output": "ŻŻOMM",
+    "output_no_heuristics" : "~~OMM"
+  },
+  {
+    "input": "\\\\omm",
+    "output": "żżomm",
+    "output_no_heuristics" : "\\\\omm"
+  },
+  {
+    "input": "||OMM",
+    "output": "ŻŻOMM",
+    "output_no_heuristics" : "||OMM"
+  },
+  {
+    "input": "[isem",
+    "output": "[isem",
+    "output_no_heuristics" : "[isem",
+    "comment": "should not change to \"ġisem\""
+  },
+  {
+    "input": "[u]",
+    "output": "[u]",
+    "output_no_heuristics": "[u]",
+    "comment": "should not change to \"ġuħ\""
+  },
+  {
+    "input": "“Malta”",
+    "output": "\"Malta\""
+  },
+  {
+    "input": "‟Malta‟",
+    "output": "\"Malta\""
+  },
+  {
+    "input": "″Malta″",
+    "output": "\"Malta\""
+  },
+  {
+    "input": "‛Malta‛",
+    "output": "'Malta'"
+  },
+  {
+    "input": "‘Malta’",
+    "output": "'Malta'"
+  },
+  {
+    "input": "ʿMaltaʾ",
+    "output": "'Malta'"
+
+  }
+]
