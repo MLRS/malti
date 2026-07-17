@@ -6,7 +6,7 @@ import regex as rx
 from malti.data.data import Data
 from malti.tokeniser import tokenise
 
-MALTESE_CHARSET = "A-Za-zĊĠĦŻċġħż"
+MALTESE_CHARSET = "A-Za-zĊĠĦŻċġħżÀÈÌÒÙÁÉÍÓÚàèìòùáéíóú"
 _HEURISTIC_MAPPINGS = {
     "\u00ad\u2010": "-",
     "\u00ad": "-",
@@ -81,10 +81,12 @@ _HEURISTIC_MAPPINGS2 = {
     "U`": "U'",
     "~": "Ċ",
 }
-_HEURISTIC_MAPPINGS2 = {
-    source: _HEURISTIC_MAPPINGS2.get(source, target)
-    for source, target in _HEURISTIC_MAPPINGS.items()
-}
+"""
+Alternative mappings, for some characters which can be mapped in more than one way.
+For example no all "a`" cases map to "à" (diġà), some map to "a'" (jista')
+and these would be covered by these fallback mappings.
+"""
+_HEURISTIC_MAPPINGS2 = _HEURISTIC_MAPPINGS | _HEURISTIC_MAPPINGS2
 
 
 def apply_mappings(text: str, mapping: dict[str, str]) -> str:
@@ -126,10 +128,22 @@ def fix_potentially_incorrectly_rendered_maltese_characters(
     """
 
     text_parts = []
+
+    # There are cases when characters are used to split words but sometimes have spaces before and after them.
+    # This is problematic since there is verification on the token level, and as a result other character substitutions
+    # would not take effect because the resultant partial word is not a valid full word.
+    # Potential word splitter characters are transformed to a soft hyphen as a canonical form,
+    # and there are then specific heuristics to map this accordingly.
     text = re.sub(r"( ¬)+ ", "\u00ad", text)
     text = re.sub(r"\s*\u00ad\s*", "\u00ad", text)
-    for token in text.split():  # do not tokenise properly, in case of certain characters incorrectly splitting tokens off
+
+    # do not tokenise properly, in case of certain characters incorrectly splitting tokens off,
+    # which would result in heuristic checks to fail later on if the sub-tokens are partial words
+    for token in text.split():
         if all(len(token) == 1 for token in tokenise(token)):
+            # For cases when a given text span is composed of single characters (remember we are whitespace splitting),
+            # heuristics are not applied since the resultant single characters would be deemed plausible
+            # (single characters often have high frequency).
             text_parts.append(token)
             continue
 
@@ -144,7 +158,14 @@ def fix_potentially_incorrectly_rendered_maltese_characters(
         normalised_counts1, is_valid1 = get_token_frequencies(normalised_token1, threshold)
         normalised_counts2, is_valid2 = get_token_frequencies(normalised_token2, threshold)
         if is_valid1 and is_valid2: # choose token based on the higher number of counts
-            normalised_token = normalised_token1 if sum(normalised_counts1) > sum(normalised_counts2) else normalised_token2
+            unnormalised_counts, is_valid = get_token_frequencies(token, threshold)
+            normalised_count = sum(unnormalised_counts)
+            normalised_count1 = sum(normalised_counts1)
+            normalised_count2 = sum(normalised_counts2)
+            if is_valid and normalised_count > normalised_count1 and normalised_count > normalised_count2:
+                normalised_token = token
+            else:
+                normalised_token = normalised_token1 if normalised_count1 > normalised_count2 else normalised_token2
         elif is_valid1:
             normalised_token = normalised_token1
         elif is_valid2:
@@ -156,7 +177,7 @@ def fix_potentially_incorrectly_rendered_maltese_characters(
         if token != normalised_token:
             logging.info(f"Normalised \"{token}\" as \"{normalised_token}\"")
         else:
-            logging.debug(f"Discarded \"{token}\" normalisation as \"{normalised_token1}\"/\"{normalised_token2}\" "
+            logging.debug(f"Skipped \"{token}\" normalisation as \"{normalised_token1}\"/\"{normalised_token2}\" "
                           f"with {normalised_counts1}/{normalised_counts2}")
 
     return " ".join(text_parts)
@@ -171,7 +192,7 @@ def normalise(text: str, *, apply_heuristics: bool = False) -> str:
     * diġa` -> diġà
 
     The optional `apply_heuristics` performs additional character substitutions based on cases where incorrectly-rendered characters were empirically observed.
-    Most of these substitutions are centered around
+    Most of these substitutions are centered around Maltese-specific characters: ċ, ġ, ħ, ż, ', & -.
     Examples:
     * ba]ar -> baħar
     * iŜda} & iżda

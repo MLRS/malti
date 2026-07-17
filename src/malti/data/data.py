@@ -37,7 +37,9 @@ class Data:
     @staticmethod
     def get_token_frequencies() -> dict[str, int]:
         """
-        :return: A dictionary of tokens & their frequency (from Korpus Malti).
+        Get Maltese token frequencies according to Korpus Malti corpus.
+        
+        :return: A dictionary mapping tokens to their frequency.
         """
         if Data.__token_frequencies is None:
             with open(os.path.join(os.path.dirname(__file__), 'token_frequencies.tsv'), 'r', encoding='utf-8') as file:
