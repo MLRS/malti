@@ -1,5 +1,5 @@
 normalise.py
-=======
+============
 
 .. automodule:: malti.normalisation.normalise
     :members:
@@ -7,3 +7,4 @@ normalise.py
     :inherited-members:
     :special-members:
     :exclude-members: __weakref__
+

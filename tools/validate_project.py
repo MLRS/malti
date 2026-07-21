@@ -63,7 +63,11 @@ def check_docstrings_tree(
         elif isinstance(node, ast.FunctionDef):
             name: str = node.name
             line_num: int = node.lineno
-            args: list[str] = [arg.arg for arg in node.args.args if arg.arg != 'self']
+            args: list[str] = [
+                arg.arg
+                for arg in node.args.args + node.args.kwonlyargs
+                if arg.arg not in ['self']
+            ]
             assert node.returns is not None
             has_return = (
                 not isinstance(node.returns, ast.NameConstant)

@@ -1,3 +1,7 @@
+'''
+Test the ``normalise`` function.
+'''
+
 import os
 import json
 import unittest
@@ -5,11 +9,21 @@ from malti.normalisation import normalise
 
 
 class NormalisationTest(unittest.TestCase):
+    '''
+    Test the ``normalise`` function.
+    '''
 
     def test_normalise(
         self,
     ) -> None:
-        with open(os.path.join(os.path.dirname(__file__), "normalise_test_cases.json"), "r", encoding="utf-8") as file:
+        '''
+        Test the ``normalise`` function.
+        '''
+        with open(
+            os.path.join(os.path.dirname(__file__), "normalise_test_cases.json"),
+            "r",
+            encoding="utf-8",
+        ) as file:
             test_set = json.load(file)
 
         for test_item in test_set:
