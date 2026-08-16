@@ -11,5 +11,6 @@ Select a topic to learn about below:
     usage/install
     usage/tokenisers
     usage/sentence_splitters
+    usage/normalisation
     usage/line_joiners
     usage/data
